@@ -167,9 +167,9 @@ sss * {
 }
 body {
   position: relative;
-  background: #361906;
+  background: rgba(80, 37, 9, 0.68);
   color: #804119;
-  font: 14px/20px 'Open Sans', sans-serif;
+  font: 18px/20px 'Dosis', sans-serif;
 }
 .ic {
 	border:0;
@@ -577,7 +577,7 @@ header .header_top {
   background-position: center center;
 }
 .box .box_bot {
-  background-color: #323045;
+  background-color: rgba(80, 37, 9, 0.68);
   color: #ffffff;
   position: absolute;
   left: 0;
@@ -629,10 +629,14 @@ header .header_top {
 }
 .blog table .fa {
   font-size: 20px;
-  color: #323045;
+  color: #fde195;
+
   min-width: 24px;
   margin-right: 20px;
   line-height: 40px;
+}
+.blog table  td + td .fa ::before{
+  background:url('../images/background.png');
 }
 .blog table td + td .fa {
   margin-right: 5px;
@@ -649,6 +653,29 @@ header .header_top {
 .blog + .blog {
   margin-top: 91px;
 }
+#searchbar{
+  position:relative;
+  width:1040px;
+  height:auto;
+}
+.formulaire {
+  display:inline-block;
+}
+.formulaire .champ{
+  width:600px;
+  height:35px;
+}
+
+.formulaire .bouton{
+  background-image: url(../images/cookie.png);
+  box-shadow: none;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+ }
+ .row {
+     margin-left: -50px;
+ }
 /****Separators****/
 .sep-1 {
   height: 1px;
@@ -671,7 +698,7 @@ header .header_top {
 .text1 {
   font-size: 24px;
   line-height: 48px;
-  font-weight: 300;
+  font-weight: bold;;
   margin-bottom: 15px;
   letter-spacing: -1px;
 }
@@ -744,7 +771,7 @@ a.color1:hover {
 }
 #footer .sub-copy {
   padding-top: 37px;
-  color: #6d6a6a;
+
 }
 #footer a:hover {
   color: #ffffff;
