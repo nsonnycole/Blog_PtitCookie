@@ -49,27 +49,24 @@
   <div class="container">
     <div class="row">
       <div class="grid_8">
-        <h2>Catégorie mode</h2>
+        <h2>Affichage par catégorie </h2>
+        {% for article in articles %}
         <div class="blog">
-          <img src="{{ asset('images/page4_img1.jpg')}}" alt="" class="img_inner">
-          <div class="text1 color1"><a href="#">Réalisation chausson aux pommes banane chocolat</a></div>
-          <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis erat mattis neque facilisis, sit amet ultricies erat rutrum. Cras facilisis, nulla vel viverra auctor, leo magna sodales felis, quis malesuada nibh odio ut velit.</p>
-          Proin pharetra luctus diam, a scelerisque eros convallis accumsan. Maecenas vehicula egestas venenatis. Duis massa eliterto dertolo auctor non pellentesque vel, aliquet sit amet erat. In mollis erat mattis neque facilisis, sit amet ultricies erat rutrum. Cras facilisis, nulla vel viverra auctor, leo magna sodales felis, quis malesuada nibh odio ut veliter.
+          <img src="{{article.image}}" alt="" class="img_inner">
+          <div class="text1 color1"><a href="#">{{article.description}}</a></div>
+          <p>{{article.contenu}}</p>
           <br>
           <a href="#" class="btn">Plus</a>
           <table>
           <tbody>
             <tr>
-              <td><time datetime="2014-01-01">
-                <span class="fa fa-calendar"></span>
-                January 20, 2014
-              </time> </td>
-              <td><a href="#"><div class="fa fa-user"></div> Admin</a></td>
+              <td>{{article.date|date('d-m-Y')}}</td>
+              <td><a href="#"><div class="fa fa-user"></div> {{article.membre.username}}</a></td>
               <td><a href="#"><span class="fa fa-link"></span> Permalink</a></td>
             </tr>
             <tr>
-              <td><div class="fa fa-bookmark"></div> Catégorie  </td>
-              <td colspan="2"><div class="fa fa-tag"></div> No tags</td>
+              <td><div class="fa fa-bookmark"></div> Catégorie {{article.categorie.nom}}  </td>
+              <td colspan="2"><div class="fa fa-tag"></div>{% for tag in article.tags %} #{{tag.getName}}, {% endfor %}</td>
             </tr>
             <tr>
               <td><div class="fa fa-comments"></div>Commentaires</td>
@@ -81,6 +78,7 @@
         </table>
         </div>
       </div>
+
       <div class="grid_4">
         <h2>Categories</h2>
         <ul class="list-1">
@@ -89,6 +87,7 @@
           <li><span></span><a href="#"><div class="fa fa-chevron-right"></div>Cuisine </a></li>
         </ul>
       </div>
+    {% endfor%}
     </div>
   </div>
 </section>

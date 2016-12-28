@@ -49,25 +49,24 @@
   <div class="container">
     <div class="row">
       <div class="grid_8">
-        <h2>chausson aux pommes banane chocolat</h2>
+        <h2>{{ Article.titre }}</h2>
         <div class="blog">
-          <img src="{{ asset('images/page4_img1.jpg')}}" alt="" class="img_inner">
-          <div class="text1 color1"><a href="#">Réalisation chausson aux pommes banane chocolat</a></div>
-          <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis erat mattis neque facilisis, sit amet ultricies erat rutrum. Cras facilisis, nulla vel viverra auctor, leo magna sodales felis, quis malesuada nibh odio ut velit.</p>
-          Proin pharetra luctus diam, a scelerisque eros convallis accumsan. Maecenas vehicula egestas venenatis. Duis massa eliterto dertolo auctor non pellentesque vel, aliquet sit amet erat. In mollis erat mattis neque facilisis, sit amet ultricies erat rutrum. Cras facilisis, nulla vel viverra auctor, leo magna sodales felis, quis malesuada nibh odio ut veliter.
+          <center><img src="{{ Article.image}}" alt="" style="width:400px;"class="img_inner"></center>
+          <div class="text1 color1"><a href="#">{{ Article.description }}</a></div>
+          <p>{{ Article.contenu }}</p>.
 
           <br>
           <br>
 
-            <p><span class="fa fa-calendar"></span> Posté le :</p>
+            <p><span class="fa fa-calendar"></span> Posté le : {{Article.datePost|date('d-m-Y')}}</p>
             <p><div class="fa fa-comments"></div> 0 Commentaire(s)</p>
           <br>
           <table>
           <tbody>
             <tr>
-                <td><a href="#"><div class="fa fa-user"></div> Admin</a></td>
+                <td><a href="#"><div class="fa fa-user"></div>{{Article.membre.username}}</a></td>
                 <td><a href=""><img src="{{asset('images/cookie.png')}}"></a>0</td>
-                <td><div class="fa fa-bookmark"></div> Catégorie: Cuisine  </td>
+                <td><div class="fa fa-bookmark"></div> Catégorie: <a href="{{ path('afficheParCat', {'id': Article.categorie}) }}">{{ Article.categorie.nom }}</a>  </td>
               </tr>
           </tbody>
         </table>
@@ -97,7 +96,9 @@
       <div class="grid_4">
           <h2><div class="fa fa-tag"></div> TAGS</h2>
           --------------------------------
-         <p>No tags</p>
+
+         <p>{% for tag in Article.tags %} #{{tag.getName}}, {% endfor %}</p>
+
       </div>
     </div>
   </div>
