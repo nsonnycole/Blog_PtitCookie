@@ -20,6 +20,21 @@ class DefaultController extends Controller
       ));
 
     }
+    /**
+     * @Route("/faq", name="faq")
+     */
+    public function faqAction(Request $request)
+    {
+      return $this->render('default/faq.html.twig');
+    }
 
-    
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contactAction(Request $request)
+    {
+      return $this->render('default/contact.html.twig');
+    }
+
+
 }

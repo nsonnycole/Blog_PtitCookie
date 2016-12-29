@@ -5,6 +5,10 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Article;
+use AppBundle\Form\Type\ArticleType;
+use AppBundle\Entity\Commentaire;
+use AppBundle\Form\Type\CommentaireType;
 
 class BlogController extends Controller
 {
@@ -36,15 +40,33 @@ class BlogController extends Controller
   /**
   * @Route("/blog/afficheArticle/{id}", name="afficheArticle", requirements={"id" = "\d+"})
   */
-  public function afficheArticleAction(Request $request,$id)
-  {
-    $em = $this->getDoctrine()->getManager();
-    $article = $em->getRepository('AppBundle:Article')->getById($id);
 
+  public function afficheArticleAction(request $request, $id)
+{
+    $article = $this->getDoctrine()->getRepository('AppBundle:Article')->getById($id);
+    $Comment = new Commentaire();
+    $Comments = $this->getDoctrine()->getRepository('AppBundle:Commentaire')->getListComments($id);
+    $formComment = $this->createForm(CommentaireType::class, $Comment);
+    $formComment->handleRequest($request);
+    if ($formComment->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $Comment->setArticle($article);
+            $em->persist($Comment);
+            $em->flush();
+     }
     return $this->render('blog/afficheArticle.html.twig', array(
-      'Article' => $article,
-
+            'formComment' => $formComment->createView(),
+            'Article' => $article,
+            'Comments' => $Comments
     ));
+  }
+
+  /**
+  * @Route("/blog/ajoutArticle", name="ajoutArticle")
+  */
+  public function ajoutArticleAction(Request $request)
+  {
+    return $this->render('blog/ajoutArticle.html.twig');
   }
 
   /**
@@ -52,10 +74,10 @@ class BlogController extends Controller
   */
   /*public function afficheParCatArticleAction(Request $request,$id)
   {
-    $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getArticles($id);
-    return $this->render('blog/afficheParCatArticle.html.twig',array(
-      'categorie' => $categorie,
-    ));
-  }*/
+  $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getArticles($id);
+  return $this->render('blog/afficheParCatArticle.html.twig',array(
+  'categorie' => $categorie,
+));
+}*/
 
 }

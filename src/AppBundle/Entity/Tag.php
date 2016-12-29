@@ -13,12 +13,12 @@ class Tag
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=32, unique=true)
     */
-    private $nom;
+    public $nom;
     /**
      * Get id
      *

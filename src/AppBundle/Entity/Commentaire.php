@@ -17,7 +17,7 @@ class Commentaire
     * @ORM\Id
     * @ORM\GeneratedValue(strategy="AUTO")
     */
-    private $id;
+    public $id;
     /**
      * @var string
      *
@@ -30,7 +30,7 @@ class Commentaire
      * )
      * @ORM\Column(name="commentaire", type="text")
     */
-    private $commentaire;
+    public $commentaire;
     /**
      * @var string
      *
@@ -48,19 +48,19 @@ class Commentaire
      * )
      * @ORM\Column(name="auteur", type="text")
      */
-    private $auteur;
+    public $auteur;
     /**
      * @var \DateTime
      *
      * @Assert\Date()
      * @ORM\Column(name="date", type="datetime")
      */
-    private $date;
+    public $date;
     /**
     * @ORM\ManyToOne(targetEntity="Article")
     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
     */
-    private $article;
+    public $article;
     public function __construct()
     {
         $this->date = new \DateTime();

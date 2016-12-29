@@ -14,15 +14,16 @@ class Membre implements UserInterface, \Serializable
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
     /**
      * @ORM\Column(type="string", length=25, unique=true)
      */
-    private $email;
+    public $email;
     /**
      * @ORM\Column(type="string", length=64)
      */
-    private $password;
+    public $password;
+
     public function getId()
     {
         return $this->id;

@@ -14,7 +14,7 @@ class Categorie
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
@@ -26,7 +26,7 @@ class Categorie
      *      maxMessage = "Le titre doit comporter 32 caractères maximum"
      * )
      */
-    private $nom;
+    public $nom;
 
     /**
      * Get id

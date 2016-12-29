@@ -10,7 +10,7 @@
 .navigation {
   z-index: 999;
   position: relative;
-  padding: 5px 0 0;
+  padding: 51px 0 0;
   float: right;
   font-family: 'Dosis', sans-serif;
 }
@@ -22,7 +22,13 @@
 .navigation nav {
   position: relative;
   padding: 0;
+  background-color: #f2dede;
 }
+
+.navigation nav a{
+  text-decoration: none;
+}
+
 .select-menu {
   display: none !important;
 }
@@ -57,7 +63,7 @@
 }
 .sf-menu > li > a {
   position: relative;
-  color: #804119;
+  color: #876a57;
   font-weight: bold;
   text-align: center;
 }
@@ -82,6 +88,18 @@
   color: #fbbb86;
   font-weight:bold;
 }
+
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: rgb(252, 238, 205);
+    /* border: 1px solid #8a6d3b; */
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
 /*==================================RESPONSIVE LAYOUTS===============================================*/
 @media only screen and (max-width: 767px) {
   .navigation {
@@ -168,7 +186,7 @@ sss * {
 body {
   position: relative;
   background: rgba(80, 37, 9, 0.68);
-  color: #804119;
+  color: #876a57;
   font: 18px/20px 'Dosis', sans-serif;
 }
 .ic {
@@ -215,10 +233,11 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-  color: #804119;
+  color: #876a57;
   font-family: 'Pathway Gothic One', sans-serif;
+
 }
-h2 {
+h1 {
   font-size: 48px;
   line-height: 48px;
   letter-spacing: -3px;
@@ -226,14 +245,39 @@ h2 {
   padding-top: 92px;
   word-spacing: 1px;
   margin-bottom: 24px;
+
 }
-h3 {
-  font-size: 36px;
-  line-height: 48px;
-  letter-spacing: -2px;
-  margin-bottom: 22px;
-  padding-top: 80px;
+h2,h3 {
+  font-size: 39px;
+  letter-spacing: -3px;
+  word-spacing: 7px;
+  padding-top: 92px;
+  word-spacing: 1px;
+  margin-bottom: 24px;
 }
+
+/** breadcrumb ***/
+.breadcrumb {
+  background-color: rgba(232, 147, 0, 0.14);
+}
+.breadcrumb>.active {
+    color: #b47676;
+}
+
+.pager li>a, .pager li>span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #f2dede;
+    border-radius: 15px;
+    font-weight: bold;
+    border-color: #f2dede;
+}
+
+.pager li>a:hover {
+    background-color: #876a57;
+    color: white;
+}
+
 /****Lists****/
 ul {
   padding: 0;
@@ -253,7 +297,7 @@ ul {
   display: block;
   position: relative;
   padding: 13px 30px 18px 60px;
-  color: #804119;
+  color: #876a57;
 }
 .list-1 li a .fa {
   font-size: 20px;
@@ -297,18 +341,7 @@ a {
 a:hover {
   color: #323045;
 }
-.btn {
-  font: 18px/20px 'Dosis', sans-serif;
-  color: #323045;
-  border: 1px solid #000;
-  display: inline-block;
-  padding: 0px 25px 5px;
-  margin-top: 16px;
-}
-.btn:hover {
-  background-color: #ffffff;
-  border-color: #eee;
-}
+
 /****classes****/
 .mb0 {
   margin-bottom: 0px !important;
@@ -423,10 +456,14 @@ header h1.logo {
   float: left;
 }
 header .header_top {
-  letter-spacing: -1px;
-  font: 300 30px/48px 'Dosis', sans-serif;
-  padding: 191px 0 198px;
-  background: url(../images/banniere.png) center 0 no-repeat;
+    letter-spacing: -1px;
+    font: 300 30px/48px 'Dosis', sans-serif;
+    padding: 0px 0 198px;
+    background: url(../images/banniere.png) center 0 no-repeat;
+}
+
+.page-header {
+    margin: -56px 0 20px;
 }
 /****Content****/
 #content {
@@ -451,6 +488,16 @@ header .header_top {
   margin-bottom: 19px;
 }
 /****Blocks****/
+
+.btn:hover, .btn-large{
+    background-color: #f2dede;
+}
+
+.btn:hover, .btn-large:hover {
+    background-color: #f2dede;
+}
+
+
 .time-1 {
   position: relative;
   top: -2px;
@@ -629,7 +676,7 @@ header .header_top {
 }
 .blog table .fa {
   font-size: 20px;
-  color: #fde195;
+  color: #876a57;
 
   min-width: 24px;
   margin-right: 20px;
@@ -696,7 +743,7 @@ header .header_top {
 }
 /****Text styles****/
 .text1 {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 48px;
   font-weight: bold;;
   margin-bottom: 15px;
@@ -786,7 +833,7 @@ a.color1:hover {
 }
 #footer .footer_mail:hover {
   text-decoration: none;
-  background-color: #804119;
+  background-color: #876a57;
   color: #323045;
 }
 #toTop {

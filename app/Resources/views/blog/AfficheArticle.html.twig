@@ -1,46 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block menu %}
-<header>
-  <div class="header_top">
-    <div class="container">
-      <div class="row">
-        <div class="grid_12">
-          <h1><a href="/"></a></h1>
-        </div>
-      </div>
-    </div>
-  </div>
-<section id="stuck_container">
-<!--==============================
-            Stuck menu
-=================================-->
-  <div class="container">
-    <div class="row">
-      <div class="grid_12 ">
-        <h1 class="logo">
-          <a href="index.html">
-            Ptit'Cookie
-          </a>
-        </h1>
-        <div class="navigation ">
-          <nav>
-            <ul class="sf-menu">
-             <li><a href="/">Accueil</a></li>
-              <li><a href="/blog">FAQ</a></li>
-             <li class="current"><a href="/blog">Blog</a></li>
-              <li><a href="/blog">Contact</a></li>
-             <li><a href="admin">Administration</a></li>
-           </ul>
-          </nav>
-          <div class="clear"></div>
-        </div>
-       <div class="clear"></div>
-      </div>
-   </div>
-  </div>
-</section>
-</header>
-{% endblock %}
 {% block body %}
 <!--=====================
           Content
@@ -48,7 +6,16 @@
 <section id="content">
   <div class="container">
     <div class="row">
-      <div class="grid_8">
+        <div class="col-lg-12">
+            <h1 class="page-header">Affichage d'un article</h1>
+            <ol class="breadcrumb">
+                <li><a href="{{url('homepage')}}">Accueil</a></li>
+                <li><a href="{{url('blog')}}">Article</a></li>
+                <li class="active">Article : {{ Article.titre }}</li>
+            </ol>
+        </div>
+    </div>
+      <div class="grid_12">
         <h2>{{ Article.titre }}</h2>
         <div class="blog">
           <center><img src="{{ Article.image}}" alt="" style="width:400px;"class="img_inner"></center>
@@ -64,36 +31,35 @@
           <table>
           <tbody>
             <tr>
-                <td><a href="#"><div class="fa fa-user"></div>{{Article.membre.username}}</a></td>
+                <td><a href="#"><div class="fa fa-user"></div>{{Article.membre.getUsername()}}</a></td>
                 <td><a href=""><img src="{{asset('images/cookie.png')}}"></a>0</td>
-                <td><div class="fa fa-bookmark"></div> Catégorie: <a href="{{ path('afficheParCat', {'id': Article.categorie}) }}">{{ Article.categorie.nom }}</a>  </td>
+                <td><div class="fa fa-bookmark"></div> Catégorie: <a href="{{ path('afficheParCat', {'id': Article.categorie.id}) }}">{{ Article.categorie.nom }}</a>  </td>
               </tr>
           </tbody>
         </table>
 
         </div>
       </div>
-      <div class="grid_4">
-        <h2><div class="fa fa-comments"></div> Commentaires</h2>
-        <!-- # Comment form -->
-  <form action="" method="post" id="comment-form">
-    <fieldset>
-    <p class="field">
-      <input name="f_mail" type="text" size="35" maxlength="255" placeholder="Votre email" />
-    </p>
-      <p class="field">
-      <textarea name="c_content" id="c_content" cols="35" rows="7" placeholder="Votre commentaire"></textarea>
-      </p>
-      <p class="form-help"></p>
+      <div class="row">
+      <form class="col s6">
+        <div class="row">
+          <h2><div class="fa fa-comments"></div> Commentaires</h2>
+        {{ form_start(formComment) }}
+          <div class="input-field col s6">
+            {{ form_row(formComment.auteur) }}
+          </div>
+          <div class="input-field col s6">
+                {{ form_row(formComment.commentaire) }}
+          </div>
+            {{ form_row(formComment.Ajouter) }}
+        </div>
+        <div class="input-field col s6">
+            {{ form_end(formComment) }}
+        </div>
+      </form>
+    </div>
 
-    </fieldset>
-
-    <fieldset>
-      <p class="buttons"><input type="submit" class="submit"  /></p>
-    </fieldset>
-  </form>
-      </div>
-      <div class="grid_4">
+      <div class="grid_3">
           <h2><div class="fa fa-tag"></div> TAGS</h2>
           --------------------------------
 

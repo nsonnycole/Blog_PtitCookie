@@ -17,11 +17,11 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, array(
+            ->add('titre', TextType::class, array(
                                     'label' => 'Titre',
                                     'attr' => array('placeholder' => 'Choisir un titre...')))
             ->add('description', TextareaType::class, array('label' => 'Contenu de l\'article'))
-            ->add('category', EntityType::class, array(
+            ->add('categorie', EntityType::class, array(
     								'class' => 'AppBundle:Categorie',
                                     'label' => ' ',
     								'choice_label' => 'nom',
