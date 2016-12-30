@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!--=====================
+          Content
+======================-->
+<section id="content">
+<div class="container">
+  <div class="row">
+      <div class="col-lg-12">
+          <h1 class="page-header">Articles
+          </h1>
+          <ol class="breadcrumb">
+              <li><a href="{{url('blog')}}">Accueil</a>
+              </li>
+              <li>Articles</li>
+              <li class="active">Nouvel article</li>
+          </ol>
+      </div>
+  </div>
+
+
+          <div class="row">
+            <h2><div class="fa fa-plus"></div> Nouvel article</h2>
+            {{ form_start(form) }}
+            <div class="input-field col s12">
+              {{ form_row(form.titre) }}
+            </div>
+            <br>
+            <div class="input-field col s12">
+              {{ form_row(form.description) }}
+            </div>
+            <div class="input-field col s12">
+              {{ form_row(form.contenu) }}
+            </div>
+
+            <div class="input-field col s12">
+              {{ form_row(form.difficulte) }}
+            </div>
+            <div class="input-field col s12">
+              {{ form_row(form.categorie) }}
+            </div>
+            <div class="input-field col s12">
+              {{ form_row(form.tags) }}
+            </div>
+            <label for="input-field col s12">Image</label>
+            <div class="input-field col s12">
+              {{ form_widget(form.image) }}
+
+            </div>
+            </div>
+            {{ form_row(form.Ajouter) }}
+            {{ form_end(form) }}
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

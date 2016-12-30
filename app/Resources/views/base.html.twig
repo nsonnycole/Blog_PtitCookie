@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <title>{% block title %}Blog Ptit_Cookie{% endblock %}</title>
   {% block stylesheets %}
+
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
   <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}"  media="screen,projection"/>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}"  media="screen,projection"/>
   <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
   {% endblock %}
@@ -29,34 +30,34 @@
         </div>
       </div>
     </div>
-  <section id="stuck_container">
-  <!--==============================
-              Stuck menu
-  =================================-->
-    <div class="container">
-      <div class="row">
-        <div class="grid_12 ">
-          <h1 class="logo">
-            <a href="{{url('homepage')}}">
-            </a>
-          </h1>
-          <div class="navigation ">
-            <nav>
-              <ul class="sf-menu">
-               <li><a href="{{url('homepage')}}">Accueil</a></li>
-                <li><a href="{{url('faq')}}">FAQ</a></li>
-                <li><a href="{{url('blog')}}">Blog</a></li>
-                <li><a href="{{url('contact')}}">Contact</a></li>
-                <li><a href="{{url('indexAdmin')}}">Administration</a></li>
-             </ul>
-            </nav>
+    <section id="stuck_container">
+      <!--==============================
+      Stuck menu
+      =================================-->
+      <div class="container">
+        <div class="row">
+          <div class="grid_12 ">
+            <h1 class="logo">
+              <a href="{{url('homepage')}}">
+              </a>
+            </h1>
+            <div class="navigation ">
+              <nav>
+                <ul class="sf-menu">
+                  <li><a href="{{url('homepage')}}">Accueil</a></li>
+                  <li><a href="{{url('faq')}}">FAQ</a></li>
+                  <li><a href="{{url('blog')}}">Blog</a></li>
+                  <li><a href="{{url('contact')}}">Contact</a></li>
+                  <li><a href="{{url('indexAdmin')}}">Administration</a></li>
+                </ul>
+              </nav>
+              <div class="clear"></div>
+            </div>
             <div class="clear"></div>
           </div>
-         <div class="clear"></div>
         </div>
-     </div>
-    </div>
-  </section>
+      </div>
+    </section>
   </header>
 
   {% block body %}{% endblock %}
@@ -65,8 +66,8 @@
   <script src="{{ asset('js/bootstrap.js')}}"></script>
   <script src="{{ asset('js/bootstrap.min.js')}}"></script>
   <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
   <!--  <script src="{{ asset('js/jquery-migrate-1.1.1.js') }}"></script>
   <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
@@ -76,6 +77,8 @@
   <script src="{{ asset('js/tmStickUp.js') }}"></script>
   <script src="{{ asset('js/jquery.ui.totop.js') }}"></script>
   <script src="{{ asset('js/jquery.shuffle-images.js') }}"></script>-->
+  <!--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>-->
   <script>
   $(window).load(function(){
     $().UItoTop({ easingType: 'easeOutQuart' });
@@ -105,30 +108,30 @@
       <div class="row">
         <div class="grid_12">
           <div class="sub-copy">Copyright 2016</div>
-        <hr>
-        <center>
-          <div class="col-md-12">
-            <!-- Blog Search Well -->
-            <div class="well">
-              <h4>Rechercher</h4>
-              <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                </span>
+          <hr>
+          <center>
+            <div class="col-md-12">
+              <!-- Blog Search Well -->
+              <div class="well">
+                <h4>Rechercher</h4>
+                <div class="input-group">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+                <!-- /.input-group -->
               </div>
-              <!-- /.input-group -->
-            </div>
-            <!-- /.row -->
+              <!-- /.row -->
             </div>
           </div>
-          </div>
-        </center>
-      </div>
-
+        </div>
+      </center>
     </div>
 
-  </footer>
-  <a href="#" id="toTop" class="fa fa-chevron-up"></a>
+  </div>
+
+</footer>
+<a href="#" id="toTop" class="fa fa-chevron-up"></a>
 </body>
 </html>

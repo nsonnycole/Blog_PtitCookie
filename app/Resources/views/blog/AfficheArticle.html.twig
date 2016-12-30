@@ -15,13 +15,14 @@
             </ol>
         </div>
     </div>
-      <div class="grid_12">
+      <div class="col-lg-8">
+
         <h2>{{ Article.titre }}</h2>
         <div class="blog">
-          <center><img src="{{ Article.image}}" alt="" style="width:400px;"class="img_inner"></center>
+          <center><img src="{{ Article.image}}" alt="" class="img_inner"></center>
           <div class="text1 color1"><a href="#">{{ Article.description }}</a></div>
           <p>{{ Article.contenu }}</p>.
-
+          <p><a class="btn" href="">Modifier</a>  <a class="btn" href="">Supprimer</a></p>
           <br>
           <br>
 
@@ -41,31 +42,52 @@
         </div>
       </div>
       <div class="row">
-      <form class="col s6">
-        <div class="row">
-          <h2><div class="fa fa-comments"></div> Commentaires</h2>
-        {{ form_start(formComment) }}
-          <div class="input-field col s6">
-            {{ form_row(formComment.auteur) }}
-          </div>
-          <div class="input-field col s6">
-                {{ form_row(formComment.commentaire) }}
-          </div>
-            {{ form_row(formComment.Ajouter) }}
-        </div>
-        <div class="input-field col s6">
-            {{ form_end(formComment) }}
-        </div>
-      </form>
+      <div class="col-lg-4">
+        <h2><div class="fa fa-tag"></div> TAGS</h2>
+        --------------------------------
+
+       <p>{% for tag in Article.tags %} #{{tag.getName}}, {% endfor %}</p>
+
     </div>
+        <div class="col-lg-4">
+          <form class="col s12">
+            <div class="row">
+              <h2><div class="fa fa-comments"></div> Commentaires</h2>
+              {{ form_start(formComment) }}
+              <div class="input-field col s12">
+                {{ form_row(formComment.auteur) }}
+              </div>
+              <br>
 
-      <div class="grid_3">
-          <h2><div class="fa fa-tag"></div> TAGS</h2>
-          --------------------------------
+              <div class="input-field col s12">
+                {{ form_row(formComment.commentaire) }}
+              </div>
+              </div>
+              {{ form_row(formComment.Ajouter) }}
+              {{ form_end(formComment) }}
+            </div>
+          </form>
 
-         <p>{% for tag in Article.tags %} #{{tag.getName}}, {% endfor %}</p>
-
-      </div>
+          <div class="col-lg-4">
+          <h3> Les commentaires </h3>
+          <hr>
+          {% for commentaire in Comments %}
+          <div class="media">
+              <a class="pull-left" href="#">
+                  <img class="media-object" src="http://www.bitzstore.com/img/cms/Cookies.png" style="width:54px;height:54px" alt="">
+              </a>
+              <div class="media-body">
+                  <h4 class="media-heading">{{ commentaire.auteur }}
+                      <small>{{commentaire.date|date('d-m-Y')}}</small>
+                      <a href="">(Supprimer)</a>
+                  </h4>
+                  {{ commentaire.commentaire }}
+              </div>
+          </div>
+          <hr>
+          {% endfor %}
+        </div>
+    </div>
     </div>
   </div>
 </section>

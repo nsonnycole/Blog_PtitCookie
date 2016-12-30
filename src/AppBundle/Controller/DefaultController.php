@@ -13,6 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+
       $em = $this->getDoctrine()->getManager();
       $articles = $em->getRepository('AppBundle:Article')->getAllArtcicles();
       return $this->render('default/index.html.twig', array(

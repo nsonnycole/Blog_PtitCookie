@@ -25,8 +25,7 @@
         <!-- Blog Post Row -->
         <div class="row">
             <div class="col-md-1 text-center">
-                <p><i class="fa fa-camera fa-4x"></i>
-                </p>
+                <p><i class="fa fa-camera fa-4x"></i></p>
                 <p>{{article.date|date('d/m/Y')}}</p>
             </div>
             <div class="col-md-5">
@@ -41,7 +40,7 @@
                 <p>Auteur : <a href="#">{{article.membre.username}}</a></p>
                 <p>Catégorie : {{article.categorie.nom}}</p>
                 <p>{{article.description}}</p>
-                <p> Tags : #Good</p>
+                <p>{% for tag in article.tags %} #{{tag.getName}}, {% endfor %}</p>
                 <a class="btn btn-warning" href="{{ path('afficheArticle', {'id': article.id}) }}">Plus.. <i class="fa fa-angle-right"></i></a>
 
             </div>
@@ -65,4 +64,5 @@
     </div>
   </div>
 </section>
+
 {% endblock %}

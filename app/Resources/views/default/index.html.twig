@@ -10,7 +10,7 @@
         <h3>Les derniers posts</h3>
       </div>
       {% for article in articles %}
-      <div class="grid_3">
+      <div class="grid_2">
         <div class="block-1">
           <div style="text-align:center"><a href="{{ path('afficheArticle', {'id': article.id}) }}"><img src="{{ article.image }}" style="width:200px;height:200px;border-radius:160px"></a></div>
           <div style="text-align:center;font-weight:bold">{{ article.titre }}

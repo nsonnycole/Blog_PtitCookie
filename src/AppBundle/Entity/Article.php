@@ -91,8 +91,7 @@ class Article
 
 	public function __construct()
 	{
-		$this->date = new \DateTime();
-		$this->tags = new ArrayCollection();
+	
 	}
 
 
@@ -148,7 +147,7 @@ class Article
 		return $this->titre;
 	}
 	/**
-	* Set date
+	* Set datePost
 	*
 	* @param \DateTime $datePost
 	*
@@ -156,11 +155,11 @@ class Article
 	*/
 	public function setDate($datePost)
 	{
-		$this->date = $datePost;
+		$this->datePost = $datePost;
 		return $this;
 	}
 	/**
-	* Get date
+	* Get datePost
 	*
 	* @return \DateTime
 	*/

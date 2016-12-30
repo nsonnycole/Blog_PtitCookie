@@ -8,19 +8,24 @@
     <div class="row">
       <div class="grid_12">
         <h2> Administration </h2>
-        <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouveau</a>
+        <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouvel article</a>
+        <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouveau tag</a>
+        <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouvel catégorie</a>
         <br>
         <br>
         <h3> Liste des articles </h3>
         <table class="table table-bordered table-striped">
           <td>Titre</td>
           <td>Description</td>
-          <td>Action</td>
+          <td colspan="4">Action</td>
+
+          {% for article in articles %}
           <tr>
-          <td></td>
-          <td></td>
-          <td><span class="glyphicon glyphicon-pencil">Modifier</span> / <span class="glyphicon glyphicon-remove">Supprimer</span></td>
+          <td>{{article.titre}}</td>
+          <td>{{article.description}}</td>
+          <td><td><a class="btn" href="">Modifier</a></td><td><a class="btn" href="">Supprimer</a></td></td>
           </tr>
+          {% endfor %}
         </table>
       </div>
     </div>

@@ -17,15 +17,17 @@ class Categorie
     public $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @var string
+     *
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = 5,
-     *      max = 32,
-     *      minMessage = "Le titre doit comporter 5 caractères minimum ",
-     *      maxMessage = "Le titre doit comporter 32 caractères maximum"
+     *      min = 20,
+     *      max = 255,
+     *      minMessage = "Le nom est trop court ",
+     *      maxMessage = "Le nom ne doit pas dépasser 255 caractères."
      * )
-     */
+     * @ORM\Column(name="nom", type="text")
+    */
     public $nom;
 
     /**

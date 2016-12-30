@@ -22,12 +22,21 @@
 .navigation nav {
   position: relative;
   padding: 0;
-  background-color: #f2dede;
+  background-color: #ffffeb;
 }
 
 .navigation nav a{
   text-decoration: none;
 }
+
+nav ul a {
+    font-size: 2rem;
+    padding: 0 23px;
+ }
+
+ nav ul a:hover {
+  background-color: #f2dede;
+  }
 
 .select-menu {
   display: none !important;
@@ -85,7 +94,7 @@
 .sf-menu > li.sfHover > a,
 .sf-menu > li.current > a,
 .sf-menu > li > a:hover {
-  color: #fbbb86;
+
   font-weight:bold;
 }
 
@@ -263,6 +272,11 @@ h2,h3 {
 .breadcrumb>.active {
     color: #b47676;
 }
+
+.breadcrumb:last-child {
+    color: #876a57;
+}
+
 
 .pager li>a, .pager li>span {
     display: inline-block;
