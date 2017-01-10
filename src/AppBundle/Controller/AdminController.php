@@ -215,5 +215,22 @@ class AdminController extends Controller
 
   }
 
+  /**
+  * @Route("/administration/indexAdmin/{id}", name="delComment", requirements={"id" = "\d+"})
+  */
+  public function delCommentAction(Request $request, $id)
+  {
+
+    $em = $this->getDoctrine()->getManager();
+    $commentaire = $this->getDoctrine()->getRepository('AppBundle:Commentaire')->getListComments($id);
+    $em->remove($commentaire);
+    $em->flush();
+    return $this->render('administration/indexAdmin.html.twig');
+
+  }
+
+
+
+
 
 }

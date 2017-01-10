@@ -22,7 +22,7 @@
           <center><img src="{{ Article.image}}" alt="" class="img_inner"></center>
           <div class="text1 color1"><a href="#">{{ Article.description }}</a></div>
           <p>{{ Article.contenu }}</p>.
-          <p><a class="btn" href="">Modifier</a>  <a class="btn" href="">Supprimer</a></p>
+          <p><a class="btn" href="{{ path('editArticle', {'id': Article.id}) }}">Modifier</a>  <a class="btn" href="{{ path('delArticle', {'id': Article.id}) }}">Supprimer</a></p>
           <br>
           <br>
 
@@ -79,7 +79,7 @@
               <div class="media-body">
                   <h4 class="media-heading">{{ commentaire.auteur }}
                       <small>{{commentaire.date|date('d-m-Y')}}</small>
-                      <a href="">(Supprimer)</a>
+                      <a href="{{ path('delComment', {'id': commentaire.id}) }}">(Supprimer)</a>
                   </h4>
                   {{ commentaire.commentaire }}
               </div>
