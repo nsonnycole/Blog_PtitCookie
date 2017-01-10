@@ -59,7 +59,7 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->persist($article);
       $em->flush();
-      return $this->render('administration/indexAdmin.html.twig');
+      return $this->redirectToRoute('indexAdmin');
       return new Response("l'article à bien été ajouté!");
     }
 
@@ -67,6 +67,40 @@ class AdminController extends Controller
             'form' => $form->createView()
         ]);
   }
+
+  /**
+  *@Route("/edit/{id}", name="editArticle", requirements={"id" = "\d+"})
+  */
+  public function editArticleAction(Request $request, Article $id)
+  {
+
+    $form = $this->createForm(ArticleType::class,$id);
+    $form->handleRequest($request);
+
+    if($form->isSubmitted()){
+      $em = $this->getDoctrine()->getManager();
+      $em->flush();
+
+      return $this->redirectToRoute('indexAdmin');
+      return new Response("L'article à bien été modifié!");
+    }
+    return $this->render('administration/ajoutArticle.html.twig',[
+            'form' => $form->createView()
+        ]);
+  }
+
+  /**
+  * @Route("/administration/indexAdmin/{id}", name="delArticle", requirements={"id" = "\d+"})
+  */
+  public function delArticleAction(Request $request, $id)
+  {
+    $em = $this->getDoctrine()->getManager();
+    $article = $this->getDoctrine()->getRepository('AppBundle:Article')->getById($id);
+    $em->remove($article);
+    $em->flush();
+    return $this->render('administration/indexAdmin.html.twig');
+  }
+
 
   /**
   * @Route("/administration/ajoutTag", name="ajoutTag")
@@ -83,12 +117,45 @@ class AdminController extends Controller
       $em->persist($tag);
       $em->flush();
 
-      return $this->render('administration/indexAdmin.html.twig');
+      return $this->redirectToRoute('indexAdmin');
       return new Response("Le tag à bien été ajouté!");
     }
     return $this->render('administration/ajoutTag.html.twig',[
             'form' => $form->createView()
         ]);
+  }
+
+  /**
+  *@Route("/edit/{id}", name="editTag", requirements={"id" = "\d+"})
+  */
+  public function editTagAction(Request $request, Tag $id)
+  {
+
+    $form = $this->createForm(TagType::class,$id);
+    $form->handleRequest($request);
+
+    if($form->isSubmitted()){
+      $em = $this->getDoctrine()->getManager();
+      $em->flush();
+
+      return $this->redirectToRoute('indexAdmin');
+      return new Response("Le tag à bien été modifié!");
+    }
+    return $this->render('administration/ajoutTag.html.twig',[
+            'form' => $form->createView()
+        ]);
+  }
+
+  /**
+  * @Route("/administration/indexAdmin/{id}", name="delTag", requirements={"id" = "\d+"})
+  */
+  public function delTagAction(Request $request,$id)
+  {
+    $em = $this->getDoctrine()->getManager();
+    $tag = $em->getRepository('AppBundle:Tag')->getTagById($id);
+    $em->remove($tag);
+    $em->flush();
+    return $this->render('administration/indexAdmin.html.twig');
   }
 
   /**
@@ -98,19 +165,54 @@ class AdminController extends Controller
   {
 
     $categorie = new Categorie();
-    $form = $this->createForm(CategorieType::class, $categorie);
+    $form = $this->createForm(CategorieType::class);
     $form->handleRequest($request);
 
     if($form->isSubmitted()){
       $em = $this->getDoctrine()->getManager();
       $em->persist($categorie);
       $em->flush();
-      return $this->render('administration/indexAdmin.html.twig');
+      return $this->redirectToRoute('indexAdmin');
       return new Response("La catégorie à bien été ajouté!");
     }
     return $this->render('administration/ajoutCategorie.html.twig',[
             'form' => $form->createView()
         ]);
+  }
+
+  /**
+  *@Route("/edit/{id}", name="editCategorie", requirements={"id" = "\d+"})
+  */
+  public function editCategorieAction(Request $request, Categorie $id)
+  {
+
+    $form = $this->createForm(CategorieType::class, $id);
+    $form->handleRequest($request);
+
+    if($form->isSubmitted()){
+      $em = $this->getDoctrine()->getManager();
+      $em->flush();
+
+      return $this->redirectToRoute('indexAdmin');
+      return new Response("La catégorie à bien été modifié!");
+    }
+    return $this->render('administration/ajoutCategorie.html.twig',[
+            'form' => $form->createView()
+        ]);
+  }
+
+  /**
+  * @Route("/administration/indexAdmin/{id}", name="delCategorie", requirements={"id" = "\d+"})
+  */
+  public function delCategorieAction(Request $request, $id)
+  {
+
+    $em = $this->getDoctrine()->getManager();
+    $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getById($id);
+    $em->remove($categorie);
+    $em->flush();
+    return $this->render('administration/indexAdmin.html.twig');
+
   }
 
 

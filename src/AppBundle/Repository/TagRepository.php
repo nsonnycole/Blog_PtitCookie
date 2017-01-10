@@ -8,7 +8,7 @@ namespace AppBundle\Repository;
  */
 class TagRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function getTagsById($id)
+	public function getTagById($id)
 	{
 		$query = $this->createQueryBuilder('t')
 			->setParameter('id', $id)

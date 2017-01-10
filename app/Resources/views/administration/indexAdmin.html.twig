@@ -21,9 +21,9 @@
 
           {% for article in articles %}
           <tr>
-          <td>{{article.titre}}</td>
+          <td><a href="{{ path('afficheArticle', {'id': article.id}) }}">{{article.titre}}</a></td>
           <td>{{article.description}}</td>
-          <td><td><a class="btn" href="">Modifier</a></td><td><a class="btn" href="">Supprimer</a></td></td>
+          <td><td><a class="btn" href="{{ path('delArticle', {'id': article.id}) }}">Modifier</a></td><td><a class="btn" href="{{ path('delArticle', {'id': article.id}) }}">Supprimer</a></td></td>
           </tr>
           {% endfor %}
         </table>
@@ -36,7 +36,7 @@
           {% for categorie in categories %}
           <tr>
           <td>{{categorie.nom}}</td>
-          <td><td><a class="btn" href="">Modifier</a></td><td><a class="btn" href="">Supprimer</a></td></td>
+          <td><td><a class="btn" href="{{ path('editCategorie', {'id': categorie.id}) }}">Modifier</a></td><td><a class="btn" href="{{ path('delCategorie', {'id': categorie.id}) }}">Supprimer</a></td></td>
           </tr>
           {% endfor %}
         </table>
@@ -50,7 +50,7 @@
           {% for tag in tags %}
           <tr>
           <td>{{tag.nom}}</td>
-          <td><td><a class="btn" href="">Modifier</a></td><td><a class="btn" href="">Supprimer</a></td></td>
+          <td><td><a class="btn" href="{{ path('editTag', {'id': tag.id}) }}">Modifier</a></td><td><a class="btn" href="{{ path('delTag', {'id': tag.id}) }}">Supprimer</a></td></td>
           </tr>
           {% endfor %}
         </table>
