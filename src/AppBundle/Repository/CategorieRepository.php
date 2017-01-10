@@ -20,9 +20,17 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
 	public function getArticles($categorie)
 	{
 		$query = $this->createQueryBuilder('c')
-			->setParameter('category', $category)
-			->where('c.category = :category')
+			->setParameter('categorie', $categorie)
+			->where('c.categorie = :category')
 			->getQuery();
 		return $query->getSingleResult();
 	}
+
+	public function getAllCategories()
+	{
+		$query = $this->createQueryBuilder('c')
+				  ->getQuery();
+		return $query->getResult();
+	}
+
 }

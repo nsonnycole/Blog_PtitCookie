@@ -54,11 +54,12 @@ class BlogController extends Controller
     $formComment->handleRequest($request);
 
 
-    if ($formComment->isValid()) {
+    if ($formComment->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $Comment->setCommentArticle($article);
             $em->persist($Comment);
             $em->flush();
+            return new Response("Le Commentaire à bien été ajouté!");
      }
     return $this->render('blog/afficheArticle.html.twig', array(
             'formComment' => $formComment->createView(),

@@ -12,6 +12,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Tag;
+use AppBundle\Entity\Categorie;
 
 class ArticleType extends AbstractType
 {
@@ -22,9 +24,16 @@ class ArticleType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('contenu', TextareaType::class)
             ->add('difficulte', TextType::class)
-            ->add('image', FileType::class)
-            ->add('tags', TextType::class)
-            ->add('categorie', TextType::class)
-            ->add('Ajouter', SubmitType::class);
+            ->add('image', TextType::class)
+            ->add('categorie', EntityType::class, array(
+    								                'class' => 'AppBundle:Categorie',
+    								                'choice_label' => 'nom',
+                                    'multiple' => true,
+                                    'required' => true))
+            ->add('tags', EntityType::class, array(
+                                    'class' => 'AppBundle:Tag',
+                                    'multiple' => true,
+                                    'choice_label' => 'nom',
+                                    'expanded' => false));
     }
 }

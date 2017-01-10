@@ -139,9 +139,9 @@ class Commentaire
         return $this->date;
     }
     /**
-     * Set category
+     * Set categorie
      *
-     * @param \AppBundle\Entity\Article $category
+     * @param \AppBundle\Entity\Article $categorie
      *
      * @return Commentaire
      */

@@ -3,14 +3,14 @@
 <!--=====================
           Content
 ======================-->
-<section id="content" class="gallery"><div class="ic">J'y vais ! Website Templates @ TemplateMonster.com - August11, 2014!</div>
+<section id="content" class="gallery">
   <div class="container">
     <div class="row">
       <div class="grid_12">
         <h2> Administration </h2>
         <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouvel article</a>
-        <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouveau tag</a>
-        <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouvel catégorie</a>
+        <a class="btn btn-warning" href="{{url ('ajoutTag')}}">Nouveau tag</a>
+        <a class="btn btn-warning" href="{{url ('ajoutCategorie')}}">Nouvel catégorie</a>
         <br>
         <br>
         <h3> Liste des articles </h3>
@@ -27,6 +27,34 @@
           </tr>
           {% endfor %}
         </table>
+        <div class="col-lg-6">
+        <h3>Les catégories</h3>
+        <table class="table table-bordered table-striped">
+          <td>Nom</td>
+          <td colspan="4">Action</td>
+
+          {% for categorie in categories %}
+          <tr>
+          <td>{{categorie.nom}}</td>
+          <td><td><a class="btn" href="">Modifier</a></td><td><a class="btn" href="">Supprimer</a></td></td>
+          </tr>
+          {% endfor %}
+        </table>
+        </div>
+        <div class="col-lg-6">
+        <h3>Les tags</h3>
+        <table class="table table-bordered table-striped">
+          <td>Nom</td>
+          <td colspan="4">Action</td>
+
+          {% for tag in tags %}
+          <tr>
+          <td>{{tag.nom}}</td>
+          <td><td><a class="btn" href="">Modifier</a></td><td><a class="btn" href="">Supprimer</a></td></td>
+          </tr>
+          {% endfor %}
+        </table>
+        </div>
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@
           <ol class="breadcrumb">
               <li><a href="{{url('blog')}}">Accueil</a>
               </li>
-              <li>Articles</li>
+              <li><a href="{{url('indexAdmin')}}">Administration</a></li>
               <li class="active">Nouvel article</li>
           </ol>
       </div>
@@ -22,33 +22,35 @@
           <div class="row">
             <h2><div class="fa fa-plus"></div> Nouvel article</h2>
             {{ form_start(form) }}
-            <div class="input-field col s12">
+            <div class="input-field col s6">
               {{ form_row(form.titre) }}
             </div>
-            <br>
-            <div class="input-field col s12">
+
+            <div class="input-field col s6">
+              {{ form_row(form.difficulte) }}
+            </div>
+            <div class="input-field col s6">
               {{ form_row(form.description) }}
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s6">
               {{ form_row(form.contenu) }}
             </div>
 
-            <div class="input-field col s12">
-              {{ form_row(form.difficulte) }}
-            </div>
-            <div class="input-field col s12">
+            <div class="input-field col s6">
               {{ form_row(form.categorie) }}
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s6">
               {{ form_row(form.tags) }}
             </div>
-            <label for="input-field col s12">Image</label>
-            <div class="input-field col s12">
-              {{ form_widget(form.image) }}
+          <!--  <label for="input-field col s6">Image</label>-->
+            <div class="input-field col s6">
+              {{ form_row(form.image) }}
 
             </div>
+            <br>
+            <br>
             </div>
-            {{ form_row(form.Ajouter) }}
+            <button class="btn" name="form[submit]" data-type="submit">Ajouter</button>
             {{ form_end(form) }}
           </div>
       </div>

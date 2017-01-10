@@ -24,8 +24,13 @@ class AdminController extends Controller
   {
       $em = $this->getDoctrine()->getManager();
       $articles = $em->getRepository('AppBundle:Article')->getAllArtcicles();
+      $categories = $em->getRepository('AppBundle:Categorie')->getAllCategories();
+      $tags = $em->getRepository('AppBundle:Tag')->getAllTags();
+
       return $this->render('administration/indexAdmin.html.twig', array(
-        'articles' => $articles
+        'articles' => $articles,
+        'categories' => $categories,
+        'tags' => $tags
       ));
 
   }
@@ -45,14 +50,68 @@ class AdminController extends Controller
   */
   public function ajoutArticleAction(Request $request)
   {
-    
+
     $article = new Article();
     $form = $this->createForm(ArticleType::class, $article);
     $form->handleRequest($request);
+
+    if($form->isSubmitted()){
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($article);
+      $em->flush();
+      return $this->render('administration/indexAdmin.html.twig');
+      return new Response("l'article à bien été ajouté!");
+    }
 
     return $this->render('administration/ajoutArticle.html.twig',[
             'form' => $form->createView()
         ]);
   }
+
+  /**
+  * @Route("/administration/ajoutTag", name="ajoutTag")
+  */
+  public function ajoutTagAction(Request $request)
+  {
+
+    $tag = new Tag();
+    $form = $this->createForm(TagType::class, $tag);
+    $form->handleRequest($request);
+
+    if($form->isSubmitted()){
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($tag);
+      $em->flush();
+
+      return $this->render('administration/indexAdmin.html.twig');
+      return new Response("Le tag à bien été ajouté!");
+    }
+    return $this->render('administration/ajoutTag.html.twig',[
+            'form' => $form->createView()
+        ]);
+  }
+
+  /**
+  * @Route("/administration/ajoutCategorie", name="ajoutCategorie")
+  */
+  public function ajoutCategorieAction(Request $request)
+  {
+
+    $categorie = new Categorie();
+    $form = $this->createForm(CategorieType::class, $categorie);
+    $form->handleRequest($request);
+
+    if($form->isSubmitted()){
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($categorie);
+      $em->flush();
+      return $this->render('administration/indexAdmin.html.twig');
+      return new Response("La catégorie à bien été ajouté!");
+    }
+    return $this->render('administration/ajoutCategorie.html.twig',[
+            'form' => $form->createView()
+        ]);
+  }
+
 
 }

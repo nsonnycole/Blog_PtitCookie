@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!--=====================
+          Content
+======================-->
+<section id="content">
+<div class="container">
+  <div class="row">
+      <div class="col-lg-12">
+          <h1 class="page-header">Articles
+          </h1>
+          <ol class="breadcrumb">
+              <li><a href="{{url('blog')}}">Accueil</a>
+              </li>
+                <li><a href="{{url('indexAdmin')}}">Administration</a></li>
+              <li class="active">Nouveau TAG</li>
+          </ol>
+      </div>
+  </div>
+
+
+          <div class="row">
+            <h2><div class="fa fa-plus"></div> Nouveau TAG</h2>
+            {{ form_start(form) }}
+            <div class="input-field col s6">
+              {{form_errors(form.nom)}}
+              {{ form_row(form.nom) }}
+            </div>
+            <br>
+            <br>
+            <button class="btn" name="form[submit]" data-type="submit">Ajouter</button>
+            
+            {{ form_end(form) }}
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
