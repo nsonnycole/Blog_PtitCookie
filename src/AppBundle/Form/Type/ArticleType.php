@@ -25,15 +25,7 @@ class ArticleType extends AbstractType
             ->add('contenu', TextareaType::class)
             ->add('difficulte', TextType::class)
             ->add('image', TextType::class)
-            ->add('categorie', EntityType::class, array(
-    								                'class' => 'AppBundle:Categorie',
-    								                'choice_label' => 'nom',
-                                    'multiple' => true,
-                                    'required' => true))
-            ->add('tags', EntityType::class, array(
-                                    'class' => 'AppBundle:Tag',
-                                    'multiple' => true,
-                                    'choice_label' => 'nom',
-                                    'expanded' => false));
+            ->add('categorie', TextType::class)
+            ->add('tags', TextType::class);
     }
 }

@@ -69,7 +69,7 @@ class AdminController extends Controller
   }
 
   /**
-  *@Route("/edit/{id}", name="editArticle", requirements={"id" = "\d+"})
+  *@Route("/administration/modifArticle/{id}", name="editArticle", requirements={"id" = "\d+"})
   */
   public function editArticleAction(Request $request, Article $id)
   {
@@ -81,10 +81,9 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->flush();
 
-      return $this->redirectToRoute('indexAdmin');
       return new Response("L'article à bien été modifié!");
     }
-    return $this->render('administration/ajoutArticle.html.twig',[
+    return $this->render('administration/modifArticle.html.twig',[
             'form' => $form->createView()
         ]);
   }
@@ -126,7 +125,7 @@ class AdminController extends Controller
   }
 
   /**
-  *@Route("/edit/{id}", name="editTag", requirements={"id" = "\d+"})
+  *@Route("/administration/modifTag/{id}", name="editTag", requirements={"id" = "\d+"})
   */
   public function editTagAction(Request $request, Tag $id)
   {
@@ -138,10 +137,9 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->flush();
 
-      return $this->redirectToRoute('indexAdmin');
       return new Response("Le tag à bien été modifié!");
     }
-    return $this->render('administration/ajoutTag.html.twig',[
+    return $this->render('administration/modifTag.html.twig',[
             'form' => $form->createView()
         ]);
   }
@@ -172,16 +170,16 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->persist($categorie);
       $em->flush();
-      return $this->redirectToRoute('indexAdmin');
+
       return new Response("La catégorie à bien été ajouté!");
     }
-    return $this->render('administration/ajoutCategorie.html.twig',[
+    return $this->render('administration/modifCategorie.html.twig',[
             'form' => $form->createView()
         ]);
   }
 
   /**
-  *@Route("/edit/{id}", name="editCategorie", requirements={"id" = "\d+"})
+  *@Route("/administration/modifCategorie/{id}", name="editCategorie", requirements={"id" = "\d+"})
   */
   public function editCategorieAction(Request $request, Categorie $id)
   {
