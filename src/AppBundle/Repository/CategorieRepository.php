@@ -21,7 +21,9 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
 	{
 		$query = $this->createQueryBuilder('c')
 			->setParameter('categorie', $categorie)
-			->where('c.categorie = :category')
+			->where('c.categorie = :categorie')
+			->orderBy('c.datePost', 'DESC')
+			->setMaxResults(10)
 			->getQuery();
 		return $query->getSingleResult();
 	}

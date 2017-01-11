@@ -34,7 +34,6 @@ class BlogController extends Controller
           ->getRepository('AppBundle:Article')
           ->findBy(array('categorie' => $categorie));
 
-
     return $this->render('blog/afficheParCat.html.twig', array(
       'articles' => $articleCategorie,
     ));
