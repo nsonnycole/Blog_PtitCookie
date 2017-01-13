@@ -55,11 +55,12 @@ class AdminController extends Controller
     $form = $this->createForm(ArticleType::class, $article);
     $form->handleRequest($request);
 
+
     if($form->isSubmitted()){
       $em = $this->getDoctrine()->getManager();
       $em->persist($article);
       $em->flush();
-      return $this->redirectToRoute('indexAdmin');
+      return $this->redirectToRoute('indexAdmin', array(), 301);
       return new Response("l'article à bien été ajouté!");
     }
 
@@ -82,6 +83,7 @@ class AdminController extends Controller
       $em->flush();
 
       return new Response("L'article à bien été modifié!");
+      return $this->redirectToRoute('indexAdmin', array(), 301);
     }
     return $this->render('administration/modifArticle.html.twig',[
             'form' => $form->createView()
@@ -116,7 +118,7 @@ class AdminController extends Controller
       $em->persist($tag);
       $em->flush();
 
-      return $this->redirectToRoute('indexAdmin');
+        return $this->redirectToRoute('indexAdmin', array(), 301);
       return new Response("Le tag à bien été ajouté!");
     }
     return $this->render('administration/ajoutTag.html.twig',[
@@ -191,7 +193,7 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->flush();
 
-      return $this->redirectToRoute('indexAdmin');
+        return $this->redirectToRoute('indexAdmin', array(), 301);
       return new Response("La catégorie à bien été modifié!");
     }
     return $this->render('administration/ajoutCategorie.html.twig',[
@@ -227,7 +229,35 @@ class AdminController extends Controller
 
   }
 
+  /**
+     * @Route("/administration/login", name="login")
+     */
+    public function loginAction(Request $request)
+    {
+      $authenticationUtils = $this->get('security.authentication_utils');
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render('administration/login.html.twig',array(
+                'last_username' => $lastUsername,
+                'error'         => $error,
+        ));
+    }
+    /**
+     * @Route("/login_check", name="menu_check")
+     */
+    public function loginCheckAction(Request $request)
+    {
+      $this->addFlash('info', 'The item was created successfully.');
+      return $this->redirectToRoute('indexAdmin', array(), 301);
+    }
 
+    /**
+  * @Route("/logout", name="logout")
+  */
+  public function logoutAction( Request $request)
+  {
+        return $this->redirectToRoute('homepage', array(), 301);
+  }
 
 
 

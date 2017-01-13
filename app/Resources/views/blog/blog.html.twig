@@ -16,64 +16,23 @@
         </div>
     </div>
 
-    <div class="col-md-4">
-      <!-- Blog Search Well -->
-      <div class="well">
-        <h4>Rechercher</h4>
-        <div class="input-group">
-          <input type="text" class="form-control">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-          </span>
-        </div>
-        <!-- /.input-group -->
-      </div>
-      <!-- /.row -->
-      </div>
 
       <div class="grid_12">
       </div>
-              <br>
+      <br>
+      {% for categorie in categories %}
       <div class="grid_4">
         <div class="box">
-          <img src="{{ asset('images/Beaute.jpg')}}" alt="">
+          <img src="{{ asset('images/1.png')}}" alt="">
           <div class="box_bot">
-            <div class="box_bot_title">Beauté</div>
-            <p>Découvez toutes les idées de coiffures poour tout type de cheveux, en consulatant la catégorie coiffure!</p>
-            <a href="{{ url('afficheParCat',{'id': 3})}}" class="btn">J'y vais !</a>
+            <div class="box_bot_title">{{categorie.nom}}<br>
+            <a href="{{ path('afficheParCat',{'id': categorie.id})}}" class="btn">J'y vais !</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="grid_4">
-        <div class="box">
-          <img src="{{ asset('images/cuisine.jpg')}}" alt="">
-          <div class="box_bot">
-            <div class="box_bot_title">Cuisine</div>
-            <p>Des plats variés pour tous les goûts ? Vous trouverez votre bonheur dans la catégorie cuisine</p>
-            <a href="{{ path('afficheParCat',{'id': 1})}}" class="btn">J'y vais !</a>
-          </div>
-        </div>
-      </div>
-      <div class="grid_4">
-        <div class="box">
-          <img src="{{ asset('images/Mode.jpg')}}" alt="">
-          <div class="box_bot">
-            <div class="box_bot_title">Mode</div>
-            <p>Passionné par la mode? Découvrez tous les looks qui est faites pour vous ! Vite accedez à la catégorie mode!</p>
-            <a href="{{ path('afficheParCat',{'id': 2})}}" class="btn">J'y vais !</a>
-          </div>
-        </div>
-      </div>
-      <div class="grid_4">
-        <div class="box">
-          <center><img src="{{ asset('images/autres.gif')}}" alt="" style="width: 155px;"></center>
-          <div class="box_bot">
-            <div class="box_bot_title">Autres</div>
-            <p>Un peu de tout ici !</p>
-            <a href="{{ path('afficheParCat',{'id': 4})}}" class="btn">J'y vais !</a>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
+
     </div>
   </div>
 </section>

@@ -27,9 +27,6 @@
             </div>
 
             <div class="input-field col s6">
-              {{ form_row(form.difficulte) }}
-            </div>
-            <div class="input-field col s6">
               {{ form_row(form.description) }}
             </div>
             <div class="input-field col s6">
@@ -37,17 +34,24 @@
             </div>
 
             <div class="input-field col s6">
-              {{ form_row(form.categorie) }}
+            {% for cat in form.categorie %}
+                <li>{{ form_row(cat.nom) }}</li>
+            {% endfor %}
             </div>
             <div class="input-field col s6">
-              {{ form_row(form.tags) }}
+            {% for tag in form.tags %}
+                <li>{{ form_row(tag.nom) }}</li>
+            {% endfor %}
             </div>
           <!--  <label for="input-field col s6">Image</label>-->
             <div class="input-field col s6">
               {{ form_row(form.image) }}
-
             </div>
-            <br>
+            <div class="input-field col s6">
+            <label for="input-field col s6">Difficulté</label><br>
+              {{ form_widget(form.difficulte) }}
+            </div>
+              <br>
             <br>
             </div>
             <button class="btn" name="form[submit]" data-type="submit">Ajouter</button>

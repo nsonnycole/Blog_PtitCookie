@@ -6,6 +6,11 @@
 <section id="content" class="gallery">
   <div class="container">
     <div class="row">
+    {% for message in app.session.flashbag.get('success') %}
+        <div class="row">
+            <div class="col s12 light-green white-text"><h4>{{ message }}</h4></div>
+        </div>
+    {% endfor %}
       <div class="grid_12">
         <h2> Administration </h2>
         <a class="btn btn-warning" href="{{url ('ajoutArticle')}}">Nouvel article</a>

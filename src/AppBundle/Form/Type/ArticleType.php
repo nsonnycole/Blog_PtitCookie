@@ -17,15 +17,33 @@ use AppBundle\Entity\Categorie;
 
 class ArticleType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('titre', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('contenu', TextareaType::class)
-            ->add('difficulte', TextType::class)
-            ->add('image', TextType::class)
-            ->add('categorie', TextType::class)
-            ->add('tags', TextType::class);
+  public function buildForm(FormBuilderInterface $builder, array $options)
+  {
+    $builder
+    ->add('titre', TextType::class)
+    ->add('description', TextareaType::class)
+    ->add('contenu', TextareaType::class)
+    ->add('difficulte', ChoiceType::class, [
+      'choices' => [
+        'Facile' => "Facile",
+        'Moyen' => "Moyen",
+        'Difficile' => "Difficile",
+      ],
+      'expanded' => true // Radio boutons au lieu de select
+    ])
+    ->add('image', TextType::class)
+    ->add('categorie', EntityType::class, array(
+      'class' => 'AppBundle:Categorie',
+      'label' => 'Catégorie',
+      'choice_label' => 'nom',
+      'multiple' => false,
+      'placeholder' => 'Choisir une catégorie...',
+      'required' => true))
+      ->add('tags', EntityType::class, array(
+        'class' => 'AppBundle:Tag',
+        'label' => 'Tag',
+        'multiple' => true,
+        'choice_label' => 'nom',
+        ));
+      }
     }
-}

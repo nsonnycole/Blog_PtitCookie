@@ -33,7 +33,7 @@ class Tag
      *
      * @param string $nom
      *
-     * @return Category
+     * @return Tag
      */
     public function setName($nom)
     {

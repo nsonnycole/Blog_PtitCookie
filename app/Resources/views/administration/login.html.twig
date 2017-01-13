@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!--=====================
+          Content
+======================-->
+<section id="content">
+<div class="container">
+  <div class="row">
+      <div class="col-lg-12">
+          <h1 class="page-header">Connexion
+          </h1>
+          <ol class="breadcrumb">
+              <li><a href="{{url('homepage')}}">Accueil</a>
+              </li>
+              <li class="active">Connexion</li>
+          </ol>
+      </div>
+  </div>
+  <div class="grid_6">
+  {% if error %}
+      <div>{{ error.message }}</div>
+  {% endif %}
+  <form method="POST" action="{{ path('menu_check') }}">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="_ema" value="{{last_username}}"required/>
+
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" name="_password" required/>
+
+      <button style="float:right"class="btn" type="submit">Connexion</button>
+    </form>
+  </div>
+  </div>
+</section>
+{% endblock %}
