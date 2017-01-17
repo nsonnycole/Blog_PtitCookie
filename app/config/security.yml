@@ -5,7 +5,19 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    admin:
+                        password: admin
+                        roles: 'ROLE_ADMIN'
+
+        bdd_provider:
+            entity:
+                class: AppBundle:Membre
+                property: email
+
+    encoders:
+        AppBundle\Entity\Membre: plaintext
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,12 +25,24 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        acl:
             anonymous: ~
-            # activate different ways to authenticate
-
             # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            provider: bdd_provider
+            form_login:
+                login_path: menu_login # affiche le form
+                check_path: menu_check # vérification des
+                  # identifiants fournis
+                default_target_path: indexAdmin # Chemin de redirection
+                username_parameter: _email
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+        pattern:
+            # Première méthode (exemple pattern)
+            pattern: /indexAdmin
+            anonymous: false
+            http_basic: ~
+            provider: in_memory
+
+
+    access_control:
+        - { path: /indexAdmin, roles: IS_AUTHENTICATED_REMEMBERED }

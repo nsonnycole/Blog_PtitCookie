@@ -15,6 +15,8 @@
             </ol>
         </div>
     </div>
+
+
       <div class="col-lg-8">
 
         <h2>{{ Article.titre }}</h2>
@@ -22,7 +24,7 @@
           <center><img src="{{ Article.image}}" alt="" class="img_inner"></center>
           <div class="text1 color1"><a href="#">{{ Article.description }}</a></div>
           <p>{{ Article.contenu }}</p>.
-          <p><a class="btn" href="{{ path('editArticle', {'id': Article.id}) }}">Modifier</a>  <a class="btn" href="{{ path('delArticle', {'id': Article.id}) }}">Supprimer</a></p>
+              <p><a class="btn" href="{{ path('editArticle', {'id': Article.id}) }}">Modifier</a>  <a class="btn" href="{{ path('delArticle', {'id': Article.id}) }}">Supprimer</a></p>  
           <br>
           <br>
 
@@ -50,7 +52,6 @@
 
     </div>
         <div class="col-lg-4">
-          <form class="col s12">
             <div class="row">
               <h2><div class="fa fa-comments"></div> Commentaires</h2>
               {{ form_start(formComment) }}
@@ -63,10 +64,10 @@
                 {{ form_row(formComment.commentaire) }}
               </div>
               </div>
-              <button class="btn" name="form[submit]" data-type="submit">Ajouter</button>
+                <button class="btn" name="form[submit]" data-type="submit">Ajouter</button>
               {{ form_end(formComment) }}
             </div>
-          </form>
+
 
           <div class="col-lg-4">
           <h3> Les commentaires </h3>
@@ -79,7 +80,7 @@
               <div class="media-body">
                   <h4 class="media-heading">{{ commentaire.auteur }}
                       <small>{{commentaire.date|date('d-m-Y')}}</small>
-                      <a href="{{ path('delComment', {'id': commentaire.id}) }}">(Supprimer)</a>
+                        {% if app.user %}  <a href="{{ path('delComment', {'id': commentaire.id}) }}">(Supprimer)</a>  {% endif %}
                   </h4>
                   {{ commentaire.commentaire }}
               </div>

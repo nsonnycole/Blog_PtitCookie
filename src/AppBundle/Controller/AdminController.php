@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Article;
@@ -51,6 +52,7 @@ class AdminController extends Controller
   public function ajoutArticleAction(Request $request)
   {
 
+    $session = new Session();
     $article = new Article();
     $form = $this->createForm(ArticleType::class, $article);
     $form->handleRequest($request);
@@ -60,8 +62,8 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->persist($article);
       $em->flush();
+      $session->getFlashBag()->add('success', 'l\'article à bien été ajouté!');
       return $this->redirectToRoute('indexAdmin', array(), 301);
-      return new Response("l'article à bien été ajouté!");
     }
 
     return $this->render('administration/ajoutArticle.html.twig',[
@@ -74,7 +76,7 @@ class AdminController extends Controller
   */
   public function editArticleAction(Request $request, Article $id)
   {
-
+    $session = new Session();
     $form = $this->createForm(ArticleType::class,$id);
     $form->handleRequest($request);
 
@@ -82,7 +84,7 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->flush();
 
-      return new Response("L'article à bien été modifié!");
+        $session->getFlashBag()->add('success', 'l\'article à bien été modifié !');
       return $this->redirectToRoute('indexAdmin', array(), 301);
     }
     return $this->render('administration/modifArticle.html.twig',[
@@ -95,11 +97,13 @@ class AdminController extends Controller
   */
   public function delArticleAction(Request $request, $id)
   {
+    $session = new Session();
     $em = $this->getDoctrine()->getManager();
     $article = $this->getDoctrine()->getRepository('AppBundle:Article')->getById($id);
     $em->remove($article);
     $em->flush();
-    return $this->render('administration/indexAdmin.html.twig');
+    $session->getFlashBag()->add('success', 'l\'article à bien été supprimé !');
+      return $this->redirectToRoute('indexAdmin', array(), 301);
   }
 
 
@@ -108,7 +112,7 @@ class AdminController extends Controller
   */
   public function ajoutTagAction(Request $request)
   {
-
+    $session = new Session();
     $tag = new Tag();
     $form = $this->createForm(TagType::class, $tag);
     $form->handleRequest($request);
@@ -117,9 +121,9 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->persist($tag);
       $em->flush();
+      $session->getFlashBag()->add('success', 'le tag à bien été ajouté!');
+      return $this->redirectToRoute('indexAdmin', array(), 301);
 
-        return $this->redirectToRoute('indexAdmin', array(), 301);
-      return new Response("Le tag à bien été ajouté!");
     }
     return $this->render('administration/ajoutTag.html.twig',[
             'form' => $form->createView()
@@ -131,15 +135,15 @@ class AdminController extends Controller
   */
   public function editTagAction(Request $request, Tag $id)
   {
-
+    $session = new Session();
     $form = $this->createForm(TagType::class,$id);
     $form->handleRequest($request);
 
     if($form->isSubmitted()){
       $em = $this->getDoctrine()->getManager();
       $em->flush();
-
-      return new Response("Le tag à bien été modifié!");
+      $session->getFlashBag()->add('success', 'le tag à bien été modifié !');
+      return $this->redirectToRoute('indexAdmin', array(), 301);
     }
     return $this->render('administration/modifTag.html.twig',[
             'form' => $form->createView()
@@ -151,11 +155,13 @@ class AdminController extends Controller
   */
   public function delTagAction(Request $request,$id)
   {
+    $session = new Session();
     $em = $this->getDoctrine()->getManager();
     $tag = $em->getRepository('AppBundle:Tag')->getTagById($id);
     $em->remove($tag);
     $em->flush();
-    return $this->render('administration/indexAdmin.html.twig');
+    $session->getFlashBag()->add('success', 'le tag à bien été supprimé !');
+    return $this->redirectToRoute('indexAdmin', array(), 301);
   }
 
   /**
@@ -163,7 +169,7 @@ class AdminController extends Controller
   */
   public function ajoutCategorieAction(Request $request)
   {
-
+    $session = new Session();
     $categorie = new Categorie();
     $form = $this->createForm(CategorieType::class);
     $form->handleRequest($request);
@@ -172,8 +178,8 @@ class AdminController extends Controller
       $em = $this->getDoctrine()->getManager();
       $em->persist($categorie);
       $em->flush();
-
-      return new Response("La catégorie à bien été ajouté!");
+        $session->getFlashBag()->add('success', 'la catégorie à bien été ajouté!');
+        return $this->redirectToRoute('indexAdmin', array(), 301);
     }
     return $this->render('administration/modifCategorie.html.twig',[
             'form' => $form->createView()
@@ -186,15 +192,16 @@ class AdminController extends Controller
   public function editCategorieAction(Request $request, Categorie $id)
   {
 
+    $session = new Session();
     $form = $this->createForm(CategorieType::class, $id);
     $form->handleRequest($request);
 
     if($form->isSubmitted()){
       $em = $this->getDoctrine()->getManager();
       $em->flush();
+      $session->getFlashBag()->add('success', 'la catégorie à bien été modifié!');
+      return $this->redirectToRoute('indexAdmin', array(), 301);
 
-        return $this->redirectToRoute('indexAdmin', array(), 301);
-      return new Response("La catégorie à bien été modifié!");
     }
     return $this->render('administration/ajoutCategorie.html.twig',[
             'form' => $form->createView()
@@ -206,12 +213,13 @@ class AdminController extends Controller
   */
   public function delCategorieAction(Request $request, $id)
   {
-
+    $session = new Session();
     $em = $this->getDoctrine()->getManager();
     $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getById($id);
     $em->remove($categorie);
     $em->flush();
-    return $this->render('administration/indexAdmin.html.twig');
+      $session->getFlashBag()->add('success', 'la catégorie à bien été supprimé!');
+      return $this->redirectToRoute('indexAdmin', array(), 301);
 
   }
 
@@ -220,21 +228,22 @@ class AdminController extends Controller
   */
   public function delCommentAction(Request $request, $id)
   {
-
+    $session = new Session();
     $em = $this->getDoctrine()->getManager();
     $commentaire = $this->getDoctrine()->getRepository('AppBundle:Commentaire')->getListComments($id);
     $em->remove($commentaire);
     $em->flush();
-    return $this->render('administration/indexAdmin.html.twig');
+    $session->getFlashBag()->add('success', 'le commentaire à bien été supprimé!');
+    return $this->redirectToRoute('indexAdmin', array(), 301);
 
   }
 
   /**
-     * @Route("/administration/login", name="login")
+     * @Route("/administration/login", name="menu_login")
      */
     public function loginAction(Request $request)
     {
-      $authenticationUtils = $this->get('security.authentication_utils');
+        $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
         return $this->render('administration/login.html.twig',array(
@@ -247,8 +256,7 @@ class AdminController extends Controller
      */
     public function loginCheckAction(Request $request)
     {
-      $this->addFlash('info', 'The item was created successfully.');
-      return $this->redirectToRoute('indexAdmin', array(), 301);
+        return $this->redirectToRoute('homepage', array(), 301);
     }
 
     /**

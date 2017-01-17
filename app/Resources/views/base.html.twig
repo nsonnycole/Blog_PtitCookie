@@ -48,9 +48,14 @@
                   <li><a href="{{url('faq')}}">FAQ</a></li>
                   <li><a href="{{url('blog')}}">Blog</a></li>
                   <li><a href="{{url('contact')}}">Contact</a></li>
+                  {% if app.user %}
                   <li><a href="{{url('indexAdmin')}}">Administration</a></li>
-                  <li><a href="{{url('login')}}">Connexion</a></li>
-                  <li><a href="{{url('logout')}}">Déconnexion</a></li>
+                  <li><a href="{{url('logout')}}">Déconnexion </a></li>
+                  {% else %}
+                  <li><a href="{{url('indexAdmin')}}">Administration</a></li>
+                  <li><a href="{{url('menu_login')}}">Connexion</a></li>
+                    <li><a href="{{url('logout')}}">Déconnexion </a></li>
+                  {% endif %}
                 </ul>
               </nav>
               <div class="clear"></div>
@@ -62,7 +67,8 @@
     </section>
   </header>
 
-  {% block body %}{% endblock %}
+  {% block body %}
+  {% endblock %}
   {% block javascripts %}
   <script src="{{ asset('js/jquery.js')}}"></script>
   <script src="{{ asset('js/bootstrap.js')}}"></script>
@@ -115,13 +121,12 @@
             <div class="col-md-12">
               <!-- Blog Search Well -->
               <div class="well">
-                <h4>Rechercher</h4>
-                <div class="input-group">
-                  <input type="text" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
+                <form method="post">
+
+
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+
+                </form>
                 <!-- /.input-group -->
               </div>
               <!-- /.row -->

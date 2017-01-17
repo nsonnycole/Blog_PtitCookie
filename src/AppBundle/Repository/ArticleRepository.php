@@ -27,4 +27,14 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 		return $query->getResult();
 	}
 
+	public function rechercheArticleByParametres($texte)
+	{
+		$query = $this->createQueryBuilder('a')
+					->setParameter('id', $texte)
+					->where('a.nom = :texte')
+					->orderBy('a.id', 'DESC')
+					->getQuery();
+		return $query->getResult();
+	}
+
 }

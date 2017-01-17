@@ -17,7 +17,7 @@
           </ol>
       </div>
   </div>
-
+ {{ tinymce_init() }}
 
           <div class="row">
             <h2><div class="fa fa-plus"></div> Nouvel article</h2>
@@ -34,14 +34,14 @@
             </div>
 
             <div class="input-field col s6">
-            {% for cat in form.categorie %}
-                <li>{{ form_row(cat.nom) }}</li>
-            {% endfor %}
+          {{ form_widget(form.categorie, { 'attr': {'class': 'browser-default'} }) }}
+
+
             </div>
             <div class="input-field col s6">
-            {% for tag in form.tags %}
-                <li>{{ form_row(tag.nom) }}</li>
-            {% endfor %}
+            {{ form_widget(form.tags, { 'attr': {'class': 'browser-default'} }) }}
+
+
             </div>
           <!--  <label for="input-field col s6">Image</label>-->
             <div class="input-field col s6">

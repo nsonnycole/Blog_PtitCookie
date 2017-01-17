@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Article;
 use AppBundle\Form\Type\ArticleType;
@@ -48,6 +49,7 @@ class BlogController extends Controller
 
   public function afficheArticleAction(request $request, $id)
 {
+    $session = new Session();
     $article = $this->getDoctrine()->getRepository('AppBundle:Article')->getById($id);
     $Comment = new Commentaire();
     $Comments = $this->getDoctrine()->getRepository('AppBundle:Commentaire')->getListComments($id);
@@ -60,7 +62,7 @@ class BlogController extends Controller
             $Comment->setCommentArticle($article);
             $em->persist($Comment);
             $em->flush();
-            return new Response("Le Commentaire à bien été ajouté!");
+            $session->getFlashBag()->add('success', 'l\'article à bien été ajouté!');
      }
     return $this->render('blog/afficheArticle.html.twig', array(
             'formComment' => $formComment->createView(),
