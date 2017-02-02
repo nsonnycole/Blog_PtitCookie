@@ -24,18 +24,17 @@
           <center><img src="{{ Article.image}}" alt="" class="img_inner"></center>
           <div class="text1 color1"><a href="#">{{ Article.description }}</a></div>
           <p>{{ Article.contenu }}</p>.
-              <p><a class="btn" href="{{ path('editArticle', {'id': Article.id}) }}">Modifier</a>  <a class="btn" href="{{ path('delArticle', {'id': Article.id}) }}">Supprimer</a></p>  
+              <p><a class="btn" href="{{ path('editArticle', {'id': Article.id}) }}">Modifier</a>  <a class="btn" href="{{ path('delArticle', {'id': Article.id}) }}">Supprimer</a></p>
           <br>
           <br>
 
             <p><span class="fa fa-calendar"></span> Posté le : {{Article.datePost|date('d-m-Y')}}</p>
-            <p><div class="fa fa-comments"></div> 0 Commentaire(s)</p>
           <br>
           <table>
           <tbody>
             <tr>
                 <td><a href="#"><div class="fa fa-user"></div>{{Article.membre.getUsername()}}</a></td>
-                <td><a href=""><img src="{{asset('images/cookie.png')}}"></a>0</td>
+                <td><div class="fa fa-comments"></div> 0 Commentaire(s)</td>
                 <td><div class="fa fa-bookmark"></div> Catégorie: <a href="{{ path('afficheParCat', {'id': Article.categorie.id}) }}">{{ Article.categorie.nom }}</a>  </td>
               </tr>
           </tbody>
@@ -56,7 +55,11 @@
               <h2><div class="fa fa-comments"></div> Commentaires</h2>
               {{ form_start(formComment) }}
               <div class="input-field col s12">
+              {% if app.user %}
+
+              {% else %}
                 {{ form_row(formComment.auteur) }}
+              {% endif %}
               </div>
               <br>
 

@@ -1,9 +1,15 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/service_container.html
 parameters:
-#    parameter_name: value
+    #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  app.commentaire_service:
+    class: AppBundle\Services\CommentaireService
+    arguments: ['@doctrine']
+
+    app.commentaire_extension:
+      class: AppBundle\Twig\CommentaireExtension
+      arguments: ['%app.commentaire_service%']
+      tags:
+        - { name: twig.extension }
