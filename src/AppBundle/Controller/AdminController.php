@@ -230,7 +230,7 @@ class AdminController extends Controller
   {
     $session = new Session();
     $em = $this->getDoctrine()->getManager();
-    $commentaire = $this->getDoctrine()->getRepository('AppBundle:Commentaire')->getListComments($id);
+    $commentaire = $this->getDoctrine()->getRepository('AppBundle:Commentaire')->getComment($id);
     $em->remove($commentaire);
     $em->flush();
     $session->getFlashBag()->add('success', 'le commentaire à bien été supprimé!');

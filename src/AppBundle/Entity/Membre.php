@@ -4,7 +4,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Table(name="membre")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MembreRepository")
+ * @ORM\Entity
  */
 
 class Membre implements UserInterface, \Serializable
@@ -16,11 +16,11 @@ class Membre implements UserInterface, \Serializable
      */
     public $id;
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string", unique=true)
      */
     public $email;
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string")
      */
     public $password;
 

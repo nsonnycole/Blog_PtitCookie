@@ -16,4 +16,13 @@ class CommentaireRepository extends \Doctrine\ORM\EntityRepository
 			->getQuery();
 		return $query->getResult();
 	}
+
+	public function getComment($id)
+	{
+		$query = $this->createQueryBuilder('c')
+			->setParameter('id', $id)
+			->where('c.commentaire = :id')
+			->getQuery();
+		return $query->getResult();
+	}
 }

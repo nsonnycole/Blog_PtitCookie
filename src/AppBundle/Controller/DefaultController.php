@@ -52,13 +52,6 @@ class DefaultController extends Controller
       return $this->render('default/faq.html.twig');
     }
 
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contactAction(Request $request)
-    {
-      return $this->render('default/contact.html.twig');
-    }
 
 
 }
