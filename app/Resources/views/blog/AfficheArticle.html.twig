@@ -34,7 +34,7 @@
           <tbody>
             <tr>
                 <td><a href="#"><div class="fa fa-user"></div>{{Article.membre.getUsername()}}</a></td>
-                <td><div class="fa fa-comments"></div> 0 Commentaire(s)</td>
+                <td><div class="fa fa-comments"></div> {{ getTotalCommentaire(Article.id) }} Commentaire(s)</td>
                 <td><div class="fa fa-bookmark"></div> Catégorie: <a href="{{ path('afficheParCat', {'id': Article.categorie.id}) }}">{{ Article.categorie.nom }}</a>  </td>
               </tr>
           </tbody>

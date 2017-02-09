@@ -29,13 +29,13 @@ class DefaultController extends Controller
         //On récupère les données entrées dans le formulaire par l'utilisateur
           $data = $form->getData();
           //On va récupérer la méthode dans le repository afin de trouver toutes les annonces filtrées par les paramètres du formulaire
-          $resultatRecherche = $em->getRepository('AppBundle:Article')
+      /*    $resultatRecherche = $em->getRepository('AppBundle:Article')
                                   ->rechercheArticleByParametres($data);
           //Puis on redirige vers la page de visualisation de cette liste d'annonces
 
           return $this->render('default/recherche.html.twig', array(
             'resultatRecherche' => $resultatRecherche)
-          );
+          );*/
         }
       }
 

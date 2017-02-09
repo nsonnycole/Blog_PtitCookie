@@ -21,12 +21,12 @@ class BlogController extends Controller
     $em = $this->getDoctrine()->getManager();
     $articles = $em->getRepository('AppBundle:Article')->getAllArtcicles();
     $categories = $em->getRepository('AppBundle:Categorie')->getAllCategories();
-    $recherche = $em->getDoctrine()->getRepository('AppBundle:Article')
-       ->findBy($form->getData()->toArray());
+    /*$recherche = $em->getDoctrine()->getRepository('AppBundle:Article')
+       ->findBy($form->getData()->toArray());*/
     return $this->render('blog/blog.html.twig', array(
       'articles' => $articles,
       'categories' => $categories,
-      'recherche' => $recherche,
+      //'recherche' => $recherche,
     ));
 
   }

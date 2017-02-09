@@ -21,7 +21,7 @@ class CommentaireService
     {
         return $this
             ->doctrine
-            ->getRepository('AppBundle:Commentaire')
+            ->getRepository('AppBundle:commentaire')
             ->getListComments($id)
         ;
     }
