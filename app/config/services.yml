@@ -8,8 +8,8 @@ services:
     class: AppBundle\Services\CommentaireService
     arguments: ['@doctrine']
 
-    app.commentaire_extension:
-      class: AppBundle\Twig\CommentaireExtension
-      arguments: ['%app.commentaire_service%']
-      tags:
-        - { name: twig.extension }
+  app.commentaire_extension:
+    class: AppBundle\Twig\CommentaireExtension
+    arguments: ['@app.commentaire_service']
+    tags:
+      - { name: twig.extension }

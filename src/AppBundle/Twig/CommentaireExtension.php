@@ -19,9 +19,9 @@ class CommentaireExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction(
-                'get_total_commentaire',
+                'get_total_Commentaire',
                 [$this, 'getTotalCommentaire']
-            )
+            ),
         ];
     }
     public function getTotalCommentaire($id)

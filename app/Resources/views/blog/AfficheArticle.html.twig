@@ -34,7 +34,7 @@
           <tbody>
             <tr>
                 <td><a href="#"><div class="fa fa-user"></div>{{Article.membre.getUsername()}}</a></td>
-                <td><div class="fa fa-comments"></div> {{ getTotalCommentaire(Article.id) }} Commentaire(s)</td>
+                <td><div class="fa fa-comments"></div> {{ get_total_Commentaire(Article.id) }} Commentaire(s)</td>
                 <td><div class="fa fa-bookmark"></div> Catégorie: <a href="{{ path('afficheParCat', {'id': Article.categorie.id}) }}">{{ Article.categorie.nom }}</a>  </td>
               </tr>
           </tbody>
@@ -55,11 +55,7 @@
               <h2><div class="fa fa-comments"></div> Commentaires</h2>
               {{ form_start(formComment) }}
               <div class="input-field col s12">
-              {% if app.user %}
-
-              {% else %}
                 {{ form_row(formComment.auteur) }}
-              {% endif %}
               </div>
               <br>
 
@@ -83,7 +79,6 @@
               <div class="media-body">
                   <h4 class="media-heading">{{ commentaire.auteur }}
                       <small>{{commentaire.date|date('d-m-Y')}}</small>
-                        {% if app.user %}  <a href="{{ path('delComment', {'id': commentaire.id}) }}">(Supprimer)</a>  {% endif %}
                   </h4>
                   {{ commentaire.commentaire }}
               </div>

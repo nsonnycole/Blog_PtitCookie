@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Repository;
-
 use Doctrine\ORM\EntityRepository;
+
 /**
  * CommentRepository
  *
@@ -28,4 +28,22 @@ class CommentaireRepository extends EntityRepository
 			->getQuery();
 		return $query->getResult();
 	}
+
+	/**
+  * Retourne le total des commentaires d'un article
+  * @param id identifiant du article
+  * @return int
+  **/
+  public function NbTotalComment($id)
+  {
+    return $this
+    ->createQueryBuilder('a')
+    ->select('count(a)')
+    ->where('a.article=:id')
+    ->setParameter('id',$id)
+    ->getQuery()
+    ->getSingleScalarResult()
+    ;
+    }
+
 }

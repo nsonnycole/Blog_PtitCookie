@@ -56,7 +56,8 @@ class AdminController extends Controller
     $article = new Article();
     $form = $this->createForm(ArticleType::class, $article);
     $form->handleRequest($request);
-
+    $user = $this->get('security.token_storage')->getToken()->getUser();
+    $article->setMembre($user);
 
     if($form->isSubmitted()){
       $em = $this->getDoctrine()->getManager();
@@ -159,7 +160,6 @@ class AdminController extends Controller
     $em = $this->getDoctrine()->getManager();
     $tag = $em->getRepository('AppBundle:Tag')->getTagById($id);
     $em->remove($tag);
-    $em->flush();
     $session->getFlashBag()->add('success', 'le tag à bien été supprimé !');
     return $this->redirectToRoute('indexAdmin', array(), 301);
   }
@@ -169,9 +169,10 @@ class AdminController extends Controller
   */
   public function ajoutCategorieAction(Request $request)
   {
+
     $session = new Session();
     $categorie = new Categorie();
-    $form = $this->createForm(CategorieType::class);
+    $form = $this->createForm(CategorieType::class, $categorie);
     $form->handleRequest($request);
 
     if($form->isSubmitted()){
@@ -181,7 +182,7 @@ class AdminController extends Controller
         $session->getFlashBag()->add('success', 'la catégorie à bien été ajouté!');
         return $this->redirectToRoute('indexAdmin', array(), 301);
     }
-    return $this->render('administration/modifCategorie.html.twig',[
+    return $this->render('administration/ajoutCategorie.html.twig',[
             'form' => $form->createView()
         ]);
   }
@@ -203,7 +204,7 @@ class AdminController extends Controller
       return $this->redirectToRoute('indexAdmin', array(), 301);
 
     }
-    return $this->render('administration/ajoutCategorie.html.twig',[
+    return $this->render('administration/modifCategorie.html.twig',[
             'form' => $form->createView()
         ]);
   }
@@ -213,9 +214,9 @@ class AdminController extends Controller
   */
   public function delCategorieAction(Request $request, $id)
   {
-    $session = new Session();
+     $session = new Session();
     $em = $this->getDoctrine()->getManager();
-    $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getById($id);
+    $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getCatById($id);
     $em->remove($categorie);
     $em->flush();
       $session->getFlashBag()->add('success', 'la catégorie à bien été supprimé!');
@@ -232,7 +233,6 @@ class AdminController extends Controller
     $em = $this->getDoctrine()->getManager();
     $commentaire = $this->getDoctrine()->getRepository('AppBundle:Commentaire')->getComment($id);
     $em->remove($commentaire);
-    $em->flush();
     $session->getFlashBag()->add('success', 'le commentaire à bien été supprimé!');
     return $this->redirectToRoute('indexAdmin', array(), 301);
 

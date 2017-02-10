@@ -33,13 +33,7 @@ class Commentaire
     public $commentaire;
     /**
      * @var string
-     *
-     * @Assert\NotBlank()
-     * @Assert\Regex(
-     *     pattern     = "/^[a-z]+$/i",
-     *     htmlPattern = "^[a-zA-Z]+$",
-     *     message = "Ce champ ne peut comporter que des lettres"
-     * )
+		 *
      * @Assert\Length(
      *      min = 5,
      *      max = 10,
@@ -61,6 +55,8 @@ class Commentaire
     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
     */
     public $article;
+
+
     public function __construct()
     {
         $this->date = new \DateTime();
@@ -139,7 +135,7 @@ class Commentaire
         return $this->date;
     }
     /**
-     * Set categorie
+     * Set commentaire
      *
      * @param \AppBundle\Entity\Article $categorie
      *

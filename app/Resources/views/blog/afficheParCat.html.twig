@@ -40,7 +40,7 @@
                 <p>Auteur : <a href="#">{{article.membre.username}}</a></p>
                 <p>Catégorie : {{article.categorie.nom}}</p>
                 <p>{{article.description}}</p>
-                <p>Commentaires: </p>
+                <p>{{ get_total_Commentaire(article.id) }} Commentaire(s)</p>
                 <p>{% for tag in article.tags %} #{{tag.getName}}, {% endfor %}</p>
                 <a class="btn btn-warning" href="{{ path('afficheArticle', {'id': article.id}) }}">Plus.. <i class="fa fa-angle-right"></i></a>
 
