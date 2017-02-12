@@ -10,13 +10,15 @@
       <center>
         <!-- Blog Search Well -->
           <div class="well">
-            <form method="post">
-            <input type="text">
-            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-            </form>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn " type="submit" data-type="submit"><i class="fa fa-search"></i></button>
+            {{ form_end(form) }}
+          
             <!-- /.input-group -->
           </div>
-          <!-- /.well -->  
+          <!-- /.well -->
   </center>
         <h3>Les derniers posts</h3>
       </div>

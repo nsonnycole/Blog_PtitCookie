@@ -35,7 +35,7 @@ class BlogController extends Controller
   */
   public function afficheParCatAction(Request $request,$id)
   {
-    $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getById($id);
+    $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getCatById($id);
     $articleCategorie = $this->getDoctrine()
           ->getRepository('AppBundle:Article')
           ->findBy(array('categorie' => $categorie));
@@ -74,18 +74,5 @@ class BlogController extends Controller
             'Comments' => $Comments
     ));
   }
-
-
-
-  /**
-  * @Route("/blog/afficheParCat/{id}", name="afficheParCatArticle, requirements={"id" = "\d+"}")
-  */
-  /*public function afficheParCatArticleAction(Request $request,$id)
-  {
-  $categorie = $this->getDoctrine()->getRepository('AppBundle:Categorie')->getArticles($id);
-  return $this->render('blog/afficheParCatArticle.html.twig',array(
-  'categorie' => $categorie,
-));
-}*/
 
 }

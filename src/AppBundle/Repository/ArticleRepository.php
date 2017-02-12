@@ -27,13 +27,13 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 		return $query->getResult();
 	}
 
-	public function rechercheArticleByParametres($texte)
+	public function rechercheArticleByParametres($titre)
 	{
 		$query = $this->createQueryBuilder('a')
-					->setParameter('id', $texte)
-					->where('a.nom = :texte')
-					->orderBy('a.id', 'DESC')
+					->where('a.titre = :titre')
+					->setParameter('titre', $titre)
 					->getQuery();
+
 		return $query->getResult();
 	}
 

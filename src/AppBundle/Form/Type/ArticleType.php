@@ -22,13 +22,7 @@ class ArticleType extends AbstractType
     $builder
     ->add('titre', TextType::class)
     ->add('description', TextareaType::class)
-    ->add('contenu', TextareaType::class, array(
-            'attr' => array(
-            'class' => 'tinymce',
-            'data-theme' => 'bbcode' // Skip it if you want to use default theme
-        )
-    ))
-
+    ->add('contenu', TextareaType::class)
     ->add('difficulte', ChoiceType::class, [
       'choices' => [
         'Facile' => "Facile",
@@ -48,7 +42,7 @@ class ArticleType extends AbstractType
       'required' => true))
     ->add('tags', EntityType::class, array(
         'class' => 'AppBundle:Tag',
-        'label' => 'Tag',
+        'label' => '',
         'multiple' => true,
         'expanded' => true,
         'choice_label' => 'nom',

@@ -17,40 +17,48 @@
           </ol>
       </div>
   </div>
- {{ tinymce_init() }}
 
           <div class="row">
             <h2><div class="fa fa-plus"></div> Nouvel article</h2>
             {{ form_start(form) }}
-            <div class="input-field col s6">
+
+            <div class="input-field col s12">
               {{ form_row(form.titre) }}
             </div>
 
-            <div class="input-field col s6">
-              {{ form_row(form.description) }}
+            <div class="input-field col s12">
+              {{ form_row(form.contenu, { 'attr': {'class': 'materialize-textarea'} }) }}
             </div>
-            <div class="input-field col s6">
-              {{ form_row(form.contenu) }}
+
+            <div class="input-field col s12">
+              {{ form_row(form.description, { 'attr': {'class': 'materialize-textarea'} }) }}
+            </div>
+
+            <div class="input-field col s12">
+              {{ form_row(form.description, { 'attr': {'class': 'materialize-textarea'} }) }}
+            </div>
+
+            <label for="input-field col s12">Catégorie</label>
+            <div class="input-field col s12">
+            {{ form_widget(form.categorie, { 'attr': {'class': 'browser-default'} }) }}
             </div>
 
             <div class="input-field col s6">
-          {{ form_widget(form.categorie, { 'attr': {'class': 'browser-default'} }) }}
-
-
-            </div>
-            <div class="input-field col s6">
+            <label for="input-field col s12">Tags</label><br>
             {{ form_widget(form.tags, { 'attr': {'class': 'browser-default'} }) }}
+            </div><br>
 
-
-            </div>
-          <!--  <label for="input-field col s6">Image</label>-->
             <div class="input-field col s6">
+              <label for="input-field col s12">Difficuté</label><br>
+              {{ form_row(form.difficulte) }}
+
+                            <br><br>
+            </div>
+
+            <div class="input-field col s12">
               {{ form_row(form.image) }}
             </div>
-            <div class="input-field col s6">
-            <label for="input-field col s6">Difficulté</label><br>
-              {{ form_widget(form.difficulte) }}
-            </div>
+
               <br>
             <br>
             </div>

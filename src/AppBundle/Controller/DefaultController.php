@@ -19,30 +19,32 @@ class DefaultController extends Controller
       $articles = $em->getRepository('AppBundle:Article')->getAllArtcicles();
       $form = $this->createForm(RechercheType::class);
 
-
-      if($request->getMethod() == 'POST')
-      {
-      $form->bindRequest($request);
-        if($form->isSubmitted())
+        if($request->getMethod()=='POST')
         {
           $em = $this->getDoctrine()->getManager();
         //On récupère les données entrées dans le formulaire par l'utilisateur
-          $data = $form->getData();
+          $data = $form->getData(); 
           //On va récupérer la méthode dans le repository afin de trouver toutes les annonces filtrées par les paramètres du formulaire
-      /*    $resultatRecherche = $em->getRepository('AppBundle:Article')
+         $resultatRecherche = $em->getRepository('AppBundle:Article')
                                   ->rechercheArticleByParametres($data);
-          //Puis on redirige vers la page de visualisation de cette liste d'annonces
-
+          //Puis on redirige vers la page de visualisation de cette liste des articles
           return $this->render('default/recherche.html.twig', array(
             'resultatRecherche' => $resultatRecherche)
-          );*/
-        }
-      }
+          );
+      }else{
 
         return $this->render('default/index.html.twig', array(
                 'articles' => $articles,
-                'form' =>$form->createView()
+                'form' =>$form->createView(),
+
         ));
+      }
+
+      return $this->render('default/index.html.twig', array(
+              'articles' => $articles,
+              'form' =>$form->createView(),
+
+      ));
     }
     /**
      * @Route("/faq", name="faq")
