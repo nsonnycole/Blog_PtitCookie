@@ -19,42 +19,20 @@
     </div>
     <!-- /.row -->
     {% for article in resultatRecherche %}
-    <!-- Blog Post Row -->
-    <div class="row">
-        <div class="col-md-1 text-center">
-            <p><i class="fa fa-camera fa-4x"></i></p>
-            <p>{{article.date|date('d/m/Y')}}</p>
-        </div>
-        <div class="col-md-5">
-            <a href="blog-post.html">
-                <img class="img-responsive img-hover" src="{{article.image}}" style="width:600px;height:300px" alt="">
-            </a>
-        </div>
-        <div class="col-md-6">
-            <h3>
-                <a href="{{ path('afficheArticle', {'id': article.id}) }}">{{article.titre}}</a>
-            </h3>
-            <p>Auteur : <a href="#">{{article.membre.username}}</a></p>
-            <p>Catégorie : {{article.categorie.nom}}</p>
-            <p>{{article.description}}</p>
-            <p>{{ get_total_Commentaire(article.id) }} Commentaire(s)</p>
-            <p>{% for tag in article.tags %} #{{tag.getName}}, {% endfor %}</p>
-            <a class="btn btn-warning" href="{{ path('afficheArticle', {'id': article.id}) }}">Plus.. <i class="fa fa-angle-right"></i></a>
-
-        </div>
+    <div class="grid_2">
+      <div class="block-1">
+        <div style="text-align:center"><a href="{{ path('afficheArticle', {'id': article.id}) }}"><img src="{{ article.image }}" style="width:200px;height:200px;border-radius:160px"></a></div>
+        <div style="text-align:center;font-weight:bold">{{ article.titre }}
+      </div>
     </div>
-    <!-- /.row -->
-    <hr>
-  {% endfor%}
-  <!-- Pager -->
-  <div class="row">
-      <ul class="pager">
-          <li class="previous"><a href="#">&larr; Précédent</a>
-          </li>
-          <li class="next"><a href="#">Suivant &rarr;</a>
-          </li>
-      </ul>
   </div>
+    {% else %}
+
+    <p>Désolé aucun résultat pour votre recherche.</p>
+
+    {% endfor %}
+
+
   <!-- /.row -->
   <hr>
     </div>

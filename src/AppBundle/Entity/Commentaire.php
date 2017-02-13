@@ -22,24 +22,12 @@ class Commentaire
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Length(
-     *      min = 20,
-     *      max = 255,
-     *      minMessage = "Le commentaire est trop court ",
-     *      maxMessage = "Le commentaire ne doit pas dépasser 255 caractères."
-     * )
      * @ORM\Column(name="commentaire", type="text")
     */
     public $commentaire;
     /**
      * @var string
 		 *
-     * @Assert\Length(
-     *      min = 5,
-     *      max = 10,
-     *      minMessage = "Le pseudo est trop court ",
-     *      maxMessage = "Le pseudo est trop long"
-     * )
      * @ORM\Column(name="auteur", type="text")
      */
     public $auteur;
@@ -52,7 +40,7 @@ class Commentaire
     public $date;
     /**
     * @ORM\ManyToOne(targetEntity="Article")
-    * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+    * @ORM\JoinColumn(name="article_id", referencedColumnName="id",onDelete="CASCADE")
     */
     public $article;
 

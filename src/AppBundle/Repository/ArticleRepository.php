@@ -30,11 +30,11 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 	public function rechercheArticleByParametres($titre)
 	{
 		$query = $this->createQueryBuilder('a')
-					->where('a.titre = :titre')
 					->setParameter('titre', $titre)
+					->where('a.titre = :titre')
+					->orWhere('a.description = :titre')
 					->getQuery();
-
-		return $query->getResult();
+				return $query->getResult();
 	}
 
 }

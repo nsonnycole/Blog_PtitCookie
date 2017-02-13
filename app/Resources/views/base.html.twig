@@ -45,14 +45,14 @@
               <nav>
                 <ul class="sf-menu">
                   <li><a href="{{url('homepage')}}">Accueil</a></li>
-                  <li><a href="{{url('faq')}}">FAQ</a></li>
                   <li><a href="{{url('blog')}}">Blog</a></li>
                   {% if app.user %}
                   <li><a href="{{url('indexAdmin')}}">Administration</a></li>
                   <li><a href="{{url('logout')}}">Déconnexion </a></li>
-                  {% else %}
+                  {% elseif not app.user %}
                   <li><a href="{{url('menu_login')}}">Connexion</a></li>
                   {% endif %}
+
                 </ul>
               </nav>
               <div class="clear"></div>
@@ -73,18 +73,6 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
-  <!--  <script src="{{ asset('js/jquery-migrate-1.1.1.js') }}"></script>
-  <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
-  <script src="{{ asset('js/script.js') }}"></script>
-  <script src="{{ asset('js/superfish.js' )}}"></script>
-  <script src="{{ asset('js/jquery.equalheights.js') }}"></script>
-  <script src="{{ asset('js/jquery.mobilemenu.js') }}"></script>
-  <script src="{{ asset('js/tmStickUp.js') }}"></script>
-  <script src="{{ asset('js/jquery.ui.totop.js') }}"></script>
-  <script src="{{ asset('js/jquery.shuffle-images.js') }}"></script>-->
-  <!--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea' });</script>-->
-  
   {% endblock %}
 
   <!--==============================
@@ -101,6 +89,5 @@
     </div>
 
 </footer>
-<a href="#" id="toTop" class="fa fa-chevron-up"></a>
 </body>
 </html>
