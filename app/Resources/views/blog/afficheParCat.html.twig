@@ -15,7 +15,9 @@
                 <ol class="breadcrumb">
                     <li><a href="{{url('homepage')}}">Accueil</a></li>
                     <li><a href="{{url('blog')}}">Article</a></li>
-                    <li class="active">Catégorie : </li>
+                      {% for catName in categorieName %}
+                    <li class="active">Catégorie : {{catName.nom}}</li>
+                      {% endfor %}
                 </ol>
             </div>
         </div>
@@ -49,18 +51,6 @@
         <!-- /.row -->
         <hr>
       {% endfor%}
-      <!-- Pager -->
-      <div class="row">
-          <ul class="pager">
-              <li class="previous"><a href="#">&larr; Précédent</a>
-              </li>
-              <li class="next"><a href="#">Suivant &rarr;</a>
-              </li>
-          </ul>
-      </div>
-      <!-- /.row -->
-
-      <hr>
 
     </div>
   </div>

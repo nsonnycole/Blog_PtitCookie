@@ -38,9 +38,9 @@ class BlogController extends Controller
           ->getRepository('AppBundle:Article')
           ->findBy(array('categorie' => $categorie));
 
-
     return $this->render('blog/afficheParCat.html.twig', array(
       'articles' => $articleCategorie,
+      'categorieName' => $categorie
     ));
   }
 
@@ -64,8 +64,9 @@ class BlogController extends Controller
             $Comment->setCommentArticle($article);
             $em->persist($Comment);
             $em->flush();
-            $session->getFlashBag()->add('success', 'l\'article à bien été ajouté!');
-     }
+            $session->getFlashBag()->add('success', 'Le commentaire à bien été ajouté!');
+
+   }
     return $this->render('blog/afficheArticle.html.twig', array(
             'formComment' => $formComment->createView(),
             'Article' => $article,

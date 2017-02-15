@@ -216,7 +216,9 @@ address {
   font-style: normal;
 }
 p {
+  text-align: justify;
   margin-bottom: 20px;
+  line-height: 2;
 }
 p.offset__1 {
   margin-bottom: 38px;
@@ -756,11 +758,12 @@ header .header_top {
 }
 /****Text styles****/
 .text1 {
-  font-size: 20px;
-  line-height: 48px;
-  font-weight: bold;;
+  font-size: 19px;
+  text-align: center;
+  line-height: 33px;
+  font-weight: bold;
   margin-bottom: 15px;
-  letter-spacing: -1px;
+  letter-spacing: 1px;
 }
 .text1.tx__1 {
   font-size: 18px;
@@ -770,7 +773,7 @@ header .header_top {
   letter-spacing: normal;
 }
 .color1 {
-  color: #323045;
+  color: #9c6d1b
 }
 .color1 a:hover,
 a.color1:hover {

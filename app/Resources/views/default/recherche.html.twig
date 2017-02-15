@@ -18,7 +18,7 @@
         </div>
     </div>
     <!-- /.row -->
-    {% for article in resultatRecherche %}
+  {#≈ {% for article in resultatRecherche %}
     <div class="grid_2">
       <div class="block-1">
         <div style="text-align:center"><a href="{{ path('afficheArticle', {'id': article.id}) }}"><img src="{{ article.image }}" style="width:200px;height:200px;border-radius:160px"></a></div>
@@ -27,12 +27,15 @@
     </div>
   </div>
     {% else %}
-
+    <center>
     <p>Désolé aucun résultat pour votre recherche.</p>
-
-    {% endfor %}
-
-
+    <img src="{{asset('images/cookie_triste_erreur.png')}}">
+    </center>
+    {% endfor %} #}
+    <center>
+    <p style="font-weight:bold">Désolé la recherche n'est pas encore fonctionnel.</p>
+    <img src="{{asset('images/cookie_triste_erreur.png')}}">
+    </center>
   <!-- /.row -->
   <hr>
     </div>
