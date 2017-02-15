@@ -10,6 +10,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentaireRepository extends EntityRepository
 {
+
+	/**
+	* Retourne la liste des commentaires d'un article
+	* @param id identifiant du article
+	* @return int
+	**/
 	public function getListComments($id)
 	{
 		$query = $this->createQueryBuilder('c')
@@ -17,15 +23,6 @@ class CommentaireRepository extends EntityRepository
 			->where('c.article = :id')
 			->getQuery();
 
-		return $query->getResult();
-	}
-
-	public function getComment($id)
-	{
-		$query = $this->createQueryBuilder('c')
-			->setParameter('id', $id)
-			->where('c.commentaire = :id')
-			->getQuery();
 		return $query->getResult();
 	}
 

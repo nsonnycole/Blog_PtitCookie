@@ -3,7 +3,10 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
+ * Catégorie
+ *
  * @ORM\Table(name="categorie")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategorieRepository")
  */

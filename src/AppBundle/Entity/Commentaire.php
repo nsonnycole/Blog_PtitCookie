@@ -2,8 +2,9 @@
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
- * Article
+ * Commentaire
  *
  * @ORM\Table(name="commentaire")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentaireRepository")

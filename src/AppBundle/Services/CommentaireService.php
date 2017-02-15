@@ -5,9 +5,10 @@ use Doctrine\ORM\EntityManager;
 class CommentaireService
 {
     /**
-     * @var EntityManager
+     * @var Doctrine
      */
     private $doctrine;
+
     public function __construct($doctrine)
     {
         $this->doctrine = $doctrine;

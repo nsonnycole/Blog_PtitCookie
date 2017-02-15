@@ -16,9 +16,6 @@ class RechercheType extends AbstractType
             ->add('recherche', TextType::class);
     }
 
-    public function getName()
-    {
-    return 'formulaireRecherche';
-    }
+
 }
 ?>

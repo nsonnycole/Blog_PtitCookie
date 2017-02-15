@@ -36,9 +36,8 @@ security:
                 default_target_path: indexAdmin # Chemin de redirection
                 username_parameter: _email
             logout:
-                path: /logout
-                target: /login
-
+                path:   /logout
+                target: /
         pattern:
             # Première méthode (exemple pattern)
             pattern: /indexAdmin
