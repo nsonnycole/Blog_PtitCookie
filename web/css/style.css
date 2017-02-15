@@ -758,14 +758,9 @@ header .header_top {
 }
 /****Text styles****/
 .text1 {
-<<<<<<< HEAD
-  text-align: justify;
-=======
-  font-size: 19px;
+  font-size: 15px;
   text-align: center;
   line-height: 33px;
-  font-weight: bold;
->>>>>>> ac7f06119c1ca329824d4f0a73f59772fffd3f0f
   margin-bottom: 15px;
   letter-spacing: 1px;
 }
@@ -777,15 +772,7 @@ header .header_top {
   letter-spacing: normal;
 }
 .color1 {
-<<<<<<< HEAD
   color: #AD730E;
-=======
-  color: #9c6d1b
-}
-.color1 a:hover,
-a.color1:hover {
-  color: #616070;
->>>>>>> ac7f06119c1ca329824d4f0a73f59772fffd3f0f
 }
 
 .color2 {
