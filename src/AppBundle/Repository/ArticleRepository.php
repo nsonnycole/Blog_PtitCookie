@@ -39,16 +39,16 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 
 	/**
 	*
-	* Retourne la liste des articles en fonction du paramètre champs
+	* Retourne la liste des articles en fonction du paramètre recherche
 	*
 	**/
 
-	public function rechercheArticleByParametres($champs)
+	public function rechercheArticleByParametres($recherche)
 	{
 		$query = $this->createQueryBuilder('a')
-					->setParameter('champs', $champs)
-					->where('a.titre = :champs')
-					->orWhere('a.description = :champs')
+					->setParameter('recherche', $recherche)
+					->where('a.titre LIKE :recherche')
+					->orWhere('a.description = :recherche')
 					->getQuery();
 				return $query->getResult();
 	}

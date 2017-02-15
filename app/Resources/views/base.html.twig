@@ -73,6 +73,18 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
+  <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script language="javascript" type="text/javascript">
+  tinymce.init({
+    mode : "exact",
+		theme : "advanced",
+		elements : "text",
+
+		forced_root_block : false,
+		force_br_newlines : true,
+		force_p_newlines : false
+});
+</script>
   {% endblock %}
 
   <!--==============================
