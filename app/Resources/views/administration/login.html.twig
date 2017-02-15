@@ -18,7 +18,7 @@
   </div>
   <div class="grid_6">
   {% if error %}
-      <div>{{ error.message }}</div>
+        <div style="color:red">L'email ou le mot de passe est incorrecte ! </div><br>
   {% endif %}
   <form method="POST" action="{{ path('menu_check') }}">
       <label for="email">Email</label>

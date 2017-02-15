@@ -756,11 +756,9 @@ header .header_top {
 }
 /****Text styles****/
 .text1 {
-  font-size: 20px;
-  line-height: 48px;
-  font-weight: bold;;
+  text-align: justify;
   margin-bottom: 15px;
-  letter-spacing: -1px;
+  letter-spacing: 1px;
 }
 .text1.tx__1 {
   font-size: 18px;
@@ -770,12 +768,9 @@ header .header_top {
   letter-spacing: normal;
 }
 .color1 {
-  color: #323045;
+  color: #AD730E;
 }
-.color1 a:hover,
-a.color1:hover {
-  color: #616070;
-}
+
 .color2 {
   color: #616070;
 }
