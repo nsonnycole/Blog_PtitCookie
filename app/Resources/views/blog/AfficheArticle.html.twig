@@ -26,8 +26,6 @@
 
           <textarea class="materialize-textarea" readonly>{{ Article.contenu }}</textarea>
 
-          <p>{{ Article.contenu }}</p>.
-
           {% if app.user %}    <p><a class="btn" href="{{ path('editArticle', {'id': Article.id}) }}">Modifier</a>  <a class="btn" href="{{ path('delArticle', {'id': Article.id}) }}">Supprimer</a></p>{% endif %}
           <br>
           <br>
